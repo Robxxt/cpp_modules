@@ -6,16 +6,19 @@
 #    By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/10 06:44:22 by rdragan           #+#    #+#              #
-#    Updated: 2023/11/10 07:32:56 by rdragan          ###   ########.fr        #
+#    Updated: 2023/11/14 06:45:54 by rdragan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	exe
-SRC		=	main.cpp \
-			Bureaucrat.cpp
+SRC		=	Bureaucrat.cpp \
+			main.cpp
 OBJ		=	$(SRC:.cpp=.o)
 CFLAGS	=	-Wall -Werror -Wextra -std=c++98
-CC		=	g++
+CC		=	c++
+
+%.o:%.cpp
+	$(CC) $(CFLAGS) -c $^ -o $@
 
 all: $(NAME)
 
