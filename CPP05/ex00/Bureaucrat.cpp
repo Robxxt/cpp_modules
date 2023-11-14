@@ -6,33 +6,35 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 07:25:24 by rdragan           #+#    #+#             */
-/*   Updated: 2023/11/10 07:40:58 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/11/14 09:26:21 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(void): _name("Eustaquio"), _grade(1)
+char const*	Bureaucrat::GradeTooHighException::what(void) const throw()
 {
-	std::cout << "creating Bureaucrat with default constructor" << std::endl;
+	return "GradeTooHighException";
 }
 
-Bureaucrat::Bureaucrat(std::string name): _name(name), _grade(1)
+char const*	Bureaucrat::GradeTooLowException::what(void) const throw()
 {
-	std::cout << "creating Bureaucrat with name and default grade" << std::endl;
-
+	return "GradeTooLowException";
 }
+
+Bureaucrat::Bureaucrat(void): _name("Eustaquio"), _grade(1) {}
+
+Bureaucrat::Bureaucrat(std::string name): _name(name), _grade(1) {}
 
 Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade)
 {
-	std::cout << "creating Bureaucrat" << std::endl;
-
+	if (_grade < 1)
+		throw GradeTooHighException();
+	if (_grade > 150)
+		throw GradeTooLowException();
 }
 
-Bureaucrat::~Bureaucrat(void)
-{
-	std::cout << "creating Bureaucrat with default deconstructor" << std::endl;
-}
+Bureaucrat::~Bureaucrat(void) {}
 
 std::string	Bureaucrat::getName(void)
 {
@@ -42,6 +44,20 @@ std::string	Bureaucrat::getName(void)
 int	Bureaucrat::getGrade(void)
 {
 	return (this->_grade);
+}
+
+void	Bureaucrat::incrementGrade(void)
+{
+	if (_grade <= 1)
+		throw GradeTooHighException();
+	_grade--;
+}
+
+void	Bureaucrat::decrementGrade(void)
+{
+	if (_grade >= 150)
+		throw GradeTooHighException();
+	_grade++;
 }
 
 std::ostream&	operator<<(std::ostream& COUT, Bureaucrat& bureaucrat)
