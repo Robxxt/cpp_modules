@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 09:31:18 by rdragan           #+#    #+#             */
-/*   Updated: 2023/11/15 09:38:28 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/11/15 10:59:41 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 const char*	Form::GradeTooHighException::what(void) const throw()
 {
-	return ("GradeTooHighException");
+	return ("GradeTooHigh");
 }
 
 const char*	Form::GradeTooLowException::what(void) const throw()
 {
-	return ("GradeLowHighException");
+	return ("GradeLowHigh");
 }
 
 Form::Form(void) : _name("default form"), _signed(false), _gradeToSign(10), _gradeToExec(5) {}
