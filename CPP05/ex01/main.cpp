@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/10 06:47:52 by rdragan           #+#    #+#             */
-/*   Updated: 2023/11/15 10:47:51 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/11/15 10:57:29 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,44 @@
 
 int	main(void)
 {
-	Bureaucrat	lorena("Lorena", 9);
+	Bureaucrat	lorena("lorena", 9);
+	Bureaucrat	veronika("veronika", 10);
 
 	try
 	{
-		Form		f1("Form1", 8, 15);
+		Form		f1("f1", 8, 15);
 		lorena.signForm(f1);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-
+	try
+	{
+		Form		f2("f2", 20, 15);
+		lorena.signForm(f2);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		Form		f3("f3", 3, 15);
+		veronika.signForm(f3);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	try
+	{
+		Form		f4("f4", 20, 15);
+		veronika.signForm(f4);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
 	return (0);
 }
