@@ -5,63 +5,40 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 07:25:24 by rdragan           #+#    #+#             */
-/*   Updated: 2023/11/14 09:26:21 by rdragan          ###   ########.fr       */
+/*   Created: 2023/11/23 11:39:28 by rdragan           #+#    #+#             */
+/*   Updated: 2023/11/23 11:54:06 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-char const*	Bureaucrat::GradeTooHighException::what(void) const throw()
-{
-	return "GradeTooHighException";
-}
+Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade) {}
 
-char const*	Bureaucrat::GradeTooLowException::what(void) const throw()
-{
-	return "GradeTooLowException";
-}
+Bureaucrat::Bureaucrat(const Bureaucrat& obj) : _name(obj._name), _grade(obj._grade) {}
 
-Bureaucrat::Bureaucrat(void): _name("Eustaquio"), _grade(1) {}
-
-Bureaucrat::Bureaucrat(std::string name): _name(name), _grade(1) {}
-
-Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade)
-{
-	if (_grade < 1)
-		throw GradeTooHighException();
-	if (_grade > 150)
-		throw GradeTooLowException();
-}
-
-Bureaucrat::~Bureaucrat(void) {}
+Bureaucrat::~Bureaucrat() {}
 
 std::string	Bureaucrat::getName(void)
 {
 	return (this->_name);
 }
-
-int	Bureaucrat::getGrade(void)
+int			Bureaucrat::getGrade(void)
 {
 	return (this->_grade);
 }
 
-void	Bureaucrat::incrementGrade(void)
+void		Bureaucrat::incrementGrade(void)
 {
-	if (_grade <= 1)
-		throw GradeTooHighException();
-	_grade--;
+	this->_grade--;
 }
 
-void	Bureaucrat::decrementGrade(void)
+void		Bureaucrat::decrementGrade(void)
 {
-	if (_grade >= 150)
-		throw GradeTooHighException();
-	_grade++;
+	this->_grade++;
 }
 
-std::ostream&	operator<<(std::ostream& COUT, Bureaucrat& bureaucrat)
+std::ostream&	operator<<(std::ostream& COUT, Bureaucrat& b)
 {
-	COUT << bureaucrat.getName() << ", " << "bureaucrat grade " << bureaucrat.getGrade() << "\n";
+	COUT << b.getName() << ", bureaucrat grade " << b.getGrade() << "." << std::endl;
 	return (COUT);
 }
