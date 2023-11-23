@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/10 06:48:45 by rdragan           #+#    #+#             */
-/*   Updated: 2023/11/15 10:42:00 by rdragan          ###   ########.fr       */
+/*   Created: 2023/11/23 11:36:05 by rdragan           #+#    #+#             */
+/*   Updated: 2023/11/23 16:50:45 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,36 @@
 # define BUREAUCRAT_HPP
 
 # include <iostream>
+# include <string>
 
-class Form;
-
-class	Bureaucrat
+class	Form;
+class Bureaucrat
 {
+private:
+	std::string	_name;
+	int			_grade;
 public:
-	Bureaucrat(void);
-	Bureaucrat(std::string name);
 	Bureaucrat(std::string name, int grade);
-	// Bureaucrat(const Bureaucrat& obj);
-	// Bureaucrat&	operator=(const Bureaucrat& obj);
-	~Bureaucrat(void);
+	Bureaucrat(const Bureaucrat& obj);
+	Bureaucrat& operator=(Bureaucrat &obj);
+	~Bureaucrat();
 	std::string	getName(void);
 	int			getGrade(void);
 	void		incrementGrade(void);
 	void		decrementGrade(void);
-	void		signForm(Form& form);
-	class	GradeTooHighException : public std::exception
+	void		signForm(Form& f);
+	class GradeTooLowException : public std::exception
 	{
 	public:
-		char const*	what(void) const throw();
+		const char*	what() const throw();
 	};
-	class	GradeTooLowException : public std::exception
+	class GradeTooHighException : public std::exception
 	{
 	public:
-		char const*	what(void) const throw();
+		const char*	what() const throw();
 	};
-private:
-	std::string	_name;
-	// grade must be between [150-1] 150:low 1:high
-	int	_grade;
 };
 
-std::ostream&	operator<<(std::ostream& COUT, Bureaucrat&	bureaucrat);
+std::ostream&	operator<<(std::ostream& COUT, Bureaucrat& b);
 
 #endif

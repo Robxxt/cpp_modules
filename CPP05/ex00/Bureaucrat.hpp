@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:36:05 by rdragan           #+#    #+#             */
-/*   Updated: 2023/11/23 11:52:43 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/11/23 14:45:43 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,22 @@ private:
 public:
 	Bureaucrat(std::string name, int grade);
 	Bureaucrat(const Bureaucrat& obj);
-	Bureaucrat& operator=(const Bureaucrat &obj);
+	Bureaucrat& operator=(Bureaucrat &obj);
 	~Bureaucrat();
 	std::string	getName(void);
 	int			getGrade(void);
 	void		incrementGrade(void);
 	void		decrementGrade(void);
+	class GradeTooLowException : public std::exception
+	{
+	public:
+		const char*	what() const throw();
+	};
+	class GradeTooHighException : public std::exception
+	{
+	public:
+		const char*	what() const throw();
+	};
 };
 
 std::ostream&	operator<<(std::ostream& COUT, Bureaucrat& b);
