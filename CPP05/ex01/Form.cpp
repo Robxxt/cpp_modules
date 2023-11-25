@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:20:24 by rdragan           #+#    #+#             */
-/*   Updated: 2023/11/23 16:50:23 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/11/25 18:47:34 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ Form::Form(std::string name, int gradeToSign, int gradeToExecute)
 		throw GradeTooLowException();
 	if (_gradeToSign < 1 || _gradeToExecute < 1)
 		throw GradeTooHighException();
+}
+
+Form& Form::operator=(Form& obj)
+{
+	if (this != &obj)
+    {
+        _name = obj._name;
+        _isSigned = obj._isSigned;
+    }
+	return *this;
 }
 
 Form::Form(Form& obj)
@@ -77,7 +87,7 @@ std::ostream&	operator<<(std::ostream& COUT, Form& f)
 	COUT << "FORM INFORMATION: " << std::endl;
 	COUT << "name: " << f.getName();
 	COUT << "\tgradeToSign: " << f.getGradeToSign();
-	COUT << "\tgradeToSign: " << f.getGradeToSign();
+	COUT << "\tgradeToExecute: " << f.getGradeToExecute();
 	COUT << "\tisSigned: ";
 	if (f.getIsSigned() == true)
 		COUT << "true";

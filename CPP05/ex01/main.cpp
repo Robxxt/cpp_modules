@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 11:47:18 by rdragan           #+#    #+#             */
-/*   Updated: 2023/11/23 16:55:25 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/11/25 18:49:31 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,14 @@ void	constructFormWithExceptions()
 */
 int	main(void)
 {
-	Form		f1("f1", 10, 10);
+	Form		f1("f1", 10, 15);
+	Form		f2 = f1;
 	constructFormWithExceptions();
 	try
 	{
 		// Changing it to be bigger than 10 will throw an exception
 		// Changing it to be lower than 1 will throw an exception
-		Bureaucrat b1("b1", 5);
+		Bureaucrat b1("b1", 10);
 		// remove and won't be signed
 		f1.beSigned(b1);
 		b1.signForm(f1);
@@ -55,6 +56,6 @@ int	main(void)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	
 	std::cout << f1;
+	std::cout << f2;
 }

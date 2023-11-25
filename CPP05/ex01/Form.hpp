@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 14:20:47 by rdragan           #+#    #+#             */
-/*   Updated: 2023/11/23 16:49:19 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/11/25 18:43:21 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ private:
 public:
 	Form(std::string name, int gradeToSign, int gradeToExecute);
 	Form(Form& obj);
-	Form operator=(Form&obj);
+	Form& operator=(Form&obj);
 	~Form();
 	std::string	getName();
 	int		getGradeToSign();
