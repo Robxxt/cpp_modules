@@ -6,7 +6,7 @@
 #    By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 10:42:35 by rdragan           #+#    #+#              #
-#    Updated: 2023/12/07 16:00:17 by rdragan          ###   ########.fr        #
+#    Updated: 2023/12/07 16:28:04 by rdragan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@
 NAME	=	exe
 SRC		=	main.cpp \
 			Bureaucrat.cpp \
-			AForm.cpp
+			AForm.cpp \
+			ShrubberyCreationForm.cpp
 			
 OBJ		=	$(SRC:.cpp=.o)
 CFLAGS	=	-Wall -Werror -Wextra -std=c++98
