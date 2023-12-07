@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:58:53 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 11:51:01 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/07 12:01:26 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ void	testMultipleGradeDecrement()
 
 void	testConstructors()
 {
+	std::cout << "\n[testConstructors]" << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
 	Bureaucrat b("robert", 15);
 	Bureaucrat c(b);
 	Bureaucrat d = c;
@@ -100,6 +102,7 @@ void	testConstructors()
 	std::cout << b;
 	std::cout << c;
 	std::cout << d;
+	std::cout << "-------------------------------------" << std::endl;
 }
 
 int	main()
