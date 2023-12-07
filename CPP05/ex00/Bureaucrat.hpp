@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:45:08 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 11:43:56 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/07 11:55:21 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ private:
 public:
 	Bureaucrat();
 	Bureaucrat(const std::string& name, int grade);
+	Bureaucrat(Bureaucrat& b);
+	Bureaucrat&	operator=(const Bureaucrat& b);
 	const	std::string&	getName() const;
 	int				getGrade() const;
 	void			incrementGrade();

@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:48:23 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 11:43:54 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/07 11:59:19 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@ const char* Bureaucrat::GradeTooLowException::what() const throw()
 }
 
 Bureaucrat::Bureaucrat() : _name("default"), _grade(10) {}
+
+Bureaucrat::Bureaucrat(Bureaucrat& b): _name(b._name), _grade(b._grade) {}
+
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& b)
+{
+	if (this != &b)
+	{
+		_grade = b._grade;
+		_name = b._name;
+	}
+	return (*this);
+}
 
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : _name(name)
 {
