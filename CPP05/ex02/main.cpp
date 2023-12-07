@@ -6,13 +6,14 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:58:53 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 17:37:30 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/07 19:22:14 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 void	testConstructors()
 {
@@ -31,7 +32,7 @@ void	testConstructors()
 	std::cout << "-------------------------------------" << std::endl;
 }
 
-void	testOneExecute()
+void	testShrubberyCreationForm()
 {
 	Bureaucrat a("robert", 43);
 	ShrubberyCreationForm t("Test");
@@ -47,9 +48,39 @@ void	testOneExecute()
 	t.execute(a);
 }
 
+bool	testRobotomyRequestForm()
+{
+	Bureaucrat a("robert", 43);
+	RobotomyRequestForm t("Test");
+	
+	try
+	{
+		t.beSigned(a); // Needs to be signed
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	return (t.execute(a));
+}
+
+void	testMultipleRobotmyRequestForm()
+{
+	int	totalCases = 1000;
+	int	positive = 0;
+	for (int i = 0; i < totalCases; i++)
+	{
+		if (testRobotomyRequestForm() == true)
+			positive++;
+	}
+	std::cout << "Total positive : " << (positive * 100) / totalCases << " %" << std::endl;
+}
+
+
 int	main()
 {
 	// testConstructors();
-	testOneExecute();
+	// testShrubberyCreationForm();
+	testMultipleRobotmyRequestForm();
 	return (0);
 }
