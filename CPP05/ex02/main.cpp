@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:58:53 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 19:22:14 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/07 19:32:54 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,6 @@ void	testConstructors()
 	std::cout << d;
 
 	std::cout << "-------------------------------------" << std::endl;
-}
-
-void	testShrubberyCreationForm()
-{
-	Bureaucrat a("robert", 43);
-	ShrubberyCreationForm t("Test");
-	
-	try
-	{
-		t.beSigned(a); // Needs to be signed
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	t.execute(a);
 }
 
 bool	testRobotomyRequestForm()
@@ -76,11 +60,22 @@ void	testMultipleRobotmyRequestForm()
 	std::cout << "Total positive : " << (positive * 100) / totalCases << " %" << std::endl;
 }
 
+void	testExecuteForm()
+{
+	Bureaucrat a("robert", 46);
+	ShrubberyCreationForm t1("Test");
+	RobotomyRequestForm t2("Test");
+
+	t1.beSigned(a);
+	t2.beSigned(a);
+	a.executeForm(t1);
+	a.executeForm(t2);
+}
 
 int	main()
 {
 	// testConstructors();
-	// testShrubberyCreationForm();
-	testMultipleRobotmyRequestForm();
+	// testExecuteForm();
+	// testMultipleRobotmyRequestForm();
 	return (0);
 }
