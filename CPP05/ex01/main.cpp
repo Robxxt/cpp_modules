@@ -6,12 +6,27 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:58:53 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 13:43:36 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/07 13:53:13 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+
+void	testOneGradeCase(int s, int e)
+{
+	std::cout << "sign: " << s << " exec: " << e << "-> ";
+	try
+	{
+		Form a("one case", s, e);
+
+		std::cout << a;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << "\n";
+	}
+}
 
 void	testConstructors()
 {
@@ -26,12 +41,30 @@ void	testConstructors()
 	std::cout << b;
 	std::cout << c;
 	std::cout << d;
+
+	std::cout << "-------------------------------------" << std::endl;
+}
+
+void	testMultipleGradeCases()
+{
+	std::cout << "\n[testMultipleGradeCases]" << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	testOneGradeCase(10, 15);
+	testOneGradeCase(1, 15);
+	testOneGradeCase(150, 15);
+	testOneGradeCase(15, 10);
+	testOneGradeCase(15, 1);
+	testOneGradeCase(15, 0);
+	testOneGradeCase(1, 151);
+	testOneGradeCase(4, -1);
+	testOneGradeCase(150, -15);
 	std::cout << "-------------------------------------" << std::endl;
 }
 
 int	main()
 {
 	testConstructors();
+	testMultipleGradeCases();
 	
 	std::cout << std::endl;
 	return (0);
