@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:58:53 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 14:12:48 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/07 14:40:11 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,10 @@ void	testMultipleGradeCases()
 
 void	testSignOne(int grade, int signGrade)
 {
-
-	std::cout << "bureaucrat grade: " << grade << ", form sign grade " << signGrade << " -> ";
 	Bureaucrat	b("Test", grade);
 	Form	 	f("Form Test", signGrade, 10);
+
+	std::cout << "bureaucrat grade: " << grade << ", form sign grade " << signGrade << " -> ";
 
 	try
 	{
@@ -81,19 +81,50 @@ void	testSignOne(int grade, int signGrade)
 	
 }
 
-void	testMultipleSignCases()
+void	testMultipleisSignedCases()
 {
-	std::cout << "\n[testMultipleSignCases]" << std::endl;
+	std::cout << "\n[testMultipleisSignedCases]" << std::endl;
 	std::cout << "-------------------------------------" << std::endl;
 	testSignOne(10, 15);
 	testSignOne(10, 10);
 	testSignOne(15, 10);
 	std::cout << "-------------------------------------" << std::endl;
 }
+
+void	testOneSignForm(int grade, int signGrade)
+{
+	Bureaucrat	b("Test", grade);
+	Form	 	f("Form Test", signGrade, 10);
+	
+	std::cout << "bureaucrat grade: " << grade << ", form sign grade " << signGrade << " -> ";
+
+	try
+	{
+		f.beSigned(b);
+	}
+	catch(const std::exception& e)
+	{
+		
+	}
+	
+	b.signForm(f);
+}
+
+void	testMultipleSignCases()
+{
+	std::cout << "\n[testMultipleSignCases]" << std::endl;
+	std::cout << "-------------------------------------" << std::endl;
+	testOneSignForm(10, 15);
+	testOneSignForm(10, 10);
+	testOneSignForm(15, 10);
+	std::cout << "-------------------------------------" << std::endl;
+}
+
 int	main()
 {
 	testConstructors();
 	testMultipleGradeCases();
+	testMultipleisSignedCases();
 	testMultipleSignCases();
 	
 	std::cout << std::endl;
