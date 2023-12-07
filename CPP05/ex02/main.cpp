@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:58:53 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 16:44:21 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/07 17:37:30 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,25 @@ void	testConstructors()
 	std::cout << "-------------------------------------" << std::endl;
 }
 
+void	testOneExecute()
+{
+	Bureaucrat a("robert", 43);
+	ShrubberyCreationForm t("Test");
+	
+	try
+	{
+		t.beSigned(a); // Needs to be signed
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	t.execute(a);
+}
+
 int	main()
 {
-	testConstructors();
-	std::cout << std::endl;
+	// testConstructors();
+	testOneExecute();
 	return (0);
 }

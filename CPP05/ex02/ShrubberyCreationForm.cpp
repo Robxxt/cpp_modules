@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:31:01 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 16:46:27 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/07 17:39:49 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,37 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm(
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& s) : AForm(s), _target(s._target) {}
 
+ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationForm& s)
+{
+	if (this != &s)
+	{
+		_target = s._target;
+	}
+	return (*this);
+}
+
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	(void)executor;
-	std::cout << "HI" << std::endl;
+	if (AForm::tryToExec(executor) == false)
+		return ;
+	std::ofstream outfile(_target.c_str());
+
+	if (!outfile.is_open())
+	{
+		std::cerr << "Couldn't open the file " << _target << " to write on it";
+		return ;
+	}
+
+	outfile << "      ^    * " << std::endl;
+    outfile << "     ^^^  *  * " << std::endl;
+    outfile << "    ^^^^^  * * " << std::endl;
+    outfile << "   ^^^^^^^ *  " << std::endl;
+    outfile << "  ^^^^^^^^^  " << std::endl;
+    outfile << " ^^^^^^^^^^^ " << std::endl;
+    outfile << "^^^^^^^^^^^^^" << std::endl;
+    outfile << "     ||| rdragan" << std::endl;
+
+	outfile.close();
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}

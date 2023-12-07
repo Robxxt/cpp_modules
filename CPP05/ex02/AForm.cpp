@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:26:01 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 16:05:49 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/07 17:30:08 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,26 @@ void				AForm::beSigned(const Bureaucrat& b)
 	if (b.getGrade() > _gradeToSign)
 		throw GradeTooLowException();
 	_isSigned = true;
+}
+
+bool	AForm::tryToExec(const Bureaucrat& executor) const
+{
+	if (executor.getGrade() > this->getGradeToSign())
+	{
+		std::cout << "brother: you don't have enough grade to sign it" << std::endl;
+		return false;
+	}
+	if (executor.getGrade() > this->getGradeToExec())
+	{
+		std::cout << "brother: you don't have enough grade to execute it" << std::endl;
+		return false;
+	}
+	if (this->getIsSigned() == false)
+	{
+		std::cout << "brother: you need to sign the form first" << std::endl;
+		return false;
+	}
+	return true;
 }
 
 AForm::~AForm() {}
