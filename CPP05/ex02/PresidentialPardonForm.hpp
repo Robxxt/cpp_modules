@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 19:08:35 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 19:36:22 by rdragan          ###   ########.fr       */
+/*   Created: 2023/12/07 19:35:50 by rdragan           #+#    #+#             */
+/*   Updated: 2023/12/07 19:36:11 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 # include "AForm.hpp"
 # include <iostream>
-# include <cstdlib> // For rand() function
 
-class	RobotomyRequestForm : public AForm
+class	PresidentialPardonForm : public AForm
 {
 	private:
 		std::string	_target;
 	public:
-		RobotomyRequestForm();
-		RobotomyRequestForm(const std::string& target);
-		RobotomyRequestForm(const RobotomyRequestForm& s);
-		RobotomyRequestForm& operator=(const RobotomyRequestForm& s);
-		~RobotomyRequestForm();
+		PresidentialPardonForm();
+		PresidentialPardonForm(const std::string& target);
+		PresidentialPardonForm(const PresidentialPardonForm& s);
+		PresidentialPardonForm& operator=(const PresidentialPardonForm& s);
+		~PresidentialPardonForm();
 		bool execute(Bureaucrat const & executor) const;
 };
 
