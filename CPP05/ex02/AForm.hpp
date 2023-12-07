@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:21:40 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 17:30:02 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/07 17:46:33 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ public:
 	int					getGradeToSign() const;
 	int					getGradeToExec() const;
 	void				beSigned(const Bureaucrat& b);
-	virtual void 		execute(Bureaucrat const & executor) const = 0;
 	bool				tryToExec(const Bureaucrat& executer) const;
+	virtual bool 		execute(Bureaucrat const & executor) const = 0;
 	~AForm();
 
 	class GradeTooHighException : public std::exception

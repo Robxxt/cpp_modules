@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:48:23 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 16:02:47 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/07 17:50:14 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,14 @@ void	Bureaucrat::signForm(const AForm& f)
 		std::cout << _name << " couldn't sign " << f.getName() << " because " << reason;
 	}
 	std::cout << std::endl;
+}
+
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	if (form.execute(*this) == true)
+		std::cout << _name << " executed " << form.getName() << std::endl;
+	else
+		std::cout << "Couldn't execute the form!" << std::endl;
 }
 
 Bureaucrat::~Bureaucrat() {}

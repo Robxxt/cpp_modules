@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:31:01 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 17:39:49 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/07 17:46:05 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ ShrubberyCreationForm&	ShrubberyCreationForm::operator=(const ShrubberyCreationF
 	return (*this);
 }
 
-void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+bool	 ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	if (AForm::tryToExec(executor) == false)
-		return ;
+		return false;
 	std::ofstream outfile(_target.c_str());
 
 	if (!outfile.is_open())
 	{
 		std::cerr << "Couldn't open the file " << _target << " to write on it";
-		return ;
+		return false;
 	}
 
 	outfile << "      ^    * " << std::endl;
@@ -49,6 +49,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
     outfile << "     ||| rdragan" << std::endl;
 
 	outfile.close();
+	return true;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}

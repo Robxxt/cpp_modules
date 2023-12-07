@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:45:08 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 16:04:02 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/07 17:46:14 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ public:
 	void			incrementGrade();
 	void			decrementGrade();
 	void			signForm(const AForm& f);
+	void			executeForm(AForm const & form);
 	class GradeTooHighException : public std::exception
 	{
 		public:
