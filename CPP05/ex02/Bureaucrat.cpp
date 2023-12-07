@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 10:48:23 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 16:00:26 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/07 16:02:47 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	Bureaucrat::decrementGrade()
 		throw GradeTooLowException();
 }
 
-void	Bureaucrat::signForm(const Form& f)
+void	Bureaucrat::signForm(const AForm& f)
 {
 	std::string reason = "user grade is too low to sign this form";
 	if (f.getIsSigned() == true)

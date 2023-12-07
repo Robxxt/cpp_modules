@@ -6,12 +6,12 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:21:40 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 15:59:56 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/07 16:02:30 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include "Bureaucrat.hpp"
 # include <iostream>
@@ -26,7 +26,7 @@
 #  define EXEC_GRADE 120
 # endif
 
-class	Form
+class	AForm
 {
 private:
 	std::string _name;
@@ -34,16 +34,16 @@ private:
 	int			_gradeToSign;
 	int			_gradeToExec;
 public:
-	Form();
-	Form(const std::string& name, int gs, int ge);
-	Form(const Form& f);
-	Form&				operator=(const Form& f);
+	AForm();
+	AForm(const std::string& name, int gs, int ge);
+	AForm(const AForm& f);
+	AForm&				operator=(const AForm& f);
 	const std::string&	getName() const;
 	bool				getIsSigned() const;
 	int					getGradeToSign() const;
 	int					getGradeToExec() const;
 	void				beSigned(const Bureaucrat& b);
-	~Form();
+	~AForm();
 
 	class GradeTooHighException : public std::exception
 	{
@@ -57,6 +57,6 @@ public:
 	};
 };
 
-std::ostream&	operator<<(std::ostream& OUT, Form& f);
+std::ostream&	operator<<(std::ostream& OUT, AForm& f);
 
 #endif
