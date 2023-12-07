@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:26:01 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 13:42:59 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/07 14:10:22 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,18 @@ int					Form::getGradeToExec() const
 	return _gradeToExec;
 }
 
+void				Form::beSigned(const Bureaucrat& b)
+{
+	if (b.getGrade() > _gradeToSign)
+		throw GradeTooLowException();
+	_isSigned = true;
+}
+
 Form::~Form() {}
 
 std::ostream&	operator<<(std::ostream& OUT, Form& f)
 {
-	std::string	isSigned = (f.getIsSigned() == 0) ? "not singed" : "signed";
+	std::string	isSigned = (f.getIsSigned() == false) ? "not singed" : "signed";
 	
 	OUT << f.getName() << ", " << isSigned << ", " << f.getGradeToSign() << ", " << f.getGradeToExec() << std::endl;
 	return (OUT);
