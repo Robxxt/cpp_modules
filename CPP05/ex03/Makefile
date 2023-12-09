@@ -6,7 +6,7 @@
 #    By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 10:42:35 by rdragan           #+#    #+#              #
-#    Updated: 2023/12/09 13:03:13 by rdragan          ###   ########.fr        #
+#    Updated: 2023/12/09 14:25:33 by rdragan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 NAME	=	exe
 SRC		=	main.cpp \
 			Bureaucrat.cpp \
-			AForm.cpp \
+			Form.cpp \
 			ShrubberyCreationForm.cpp \
 			RobotomyRequestForm.cpp \
 			PresidentialPardonForm.cpp \

@@ -6,17 +6,17 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 19:06:03 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/07 19:18:23 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/09 14:26:28 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45), _target("default.txt") {}
+RobotomyRequestForm::RobotomyRequestForm() : Form("RobotomyRequestForm", 72, 45), _target("default.txt") {}
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : AForm("RobotomyRequestForm", 72, 45), _target(target) {}
+RobotomyRequestForm::RobotomyRequestForm(const std::string& target) : Form("RobotomyRequestForm", 72, 45), _target(target) {}
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& s) : AForm(s), _target(s._target) {}
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& s) : Form(s), _target(s._target) {}
 
 RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& s)
 {
@@ -29,7 +29,7 @@ RobotomyRequestForm&	RobotomyRequestForm::operator=(const RobotomyRequestForm& s
 
 bool	 RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
-	if (AForm::tryToExec(executor) == false)
+	if (Form::tryToExec(executor) == false)
 		return false;
 	std::cout << "TRRRRRTRRRRTRRR ...  ";
 

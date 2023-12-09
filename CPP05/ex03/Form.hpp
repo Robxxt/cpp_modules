@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AForm.hpp                                          :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 13:21:40 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/09 14:21:43 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/09 14:27:14 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AFORM_HPP
-# define AFORM_HPP
+#ifndef FORM_HPP
+# define FORM_HPP
 
 # include "Bureaucrat.hpp"
 # include <iostream>
@@ -26,7 +26,7 @@
 #  define EXEC_GRADE 120
 # endif
 
-class	AForm
+class	Form
 {
 private:
 	std::string _name;
@@ -34,10 +34,10 @@ private:
 	int			_gradeToSign;
 	int			_gradeToExec;
 public:
-	AForm();
-	AForm(const std::string& name, int gs, int ge);
-	AForm(const AForm& f);
-	AForm&				operator=(const AForm& f);
+	Form();
+	Form(const std::string& name, int gs, int ge);
+	Form(const Form& f);
+	Form&				operator=(const Form& f);
 	const std::string&	getName() const;
 	bool				getIsSigned() const;
 	int					getGradeToSign() const;
@@ -45,7 +45,7 @@ public:
 	void				beSigned(const Bureaucrat& b);
 	bool				tryToExec(const Bureaucrat& executer) const;
 	virtual bool 		execute(Bureaucrat const & executor) const = 0;
-	virtual ~AForm();
+	virtual ~Form();
 
 	class GradeTooHighException : public std::exception
 	{
@@ -59,6 +59,6 @@ public:
 	};
 };
 
-std::ostream&	operator<<(std::ostream& OUT, AForm& f);
+std::ostream&	operator<<(std::ostream& OUT, Form& f);
 
 #endif
