@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:45:31 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/13 11:19:20 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/13 11:53:04 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ScalarConverter::convert(const std::string& s)
 	double	nDouble = static_cast<double>(strtod(s.c_str(), &end));
 	if (*end != '\0')
 	{
-		std::cerr << "Failed conversion" << std::endl;
+		std::cerr << "Failed conversion " << nDouble << std::endl;
 		return ;
 	}
 	float	nFloat = static_cast<float>(nDouble);
@@ -50,6 +50,17 @@ void	ScalarConverter::convert(const std::string& s)
 		std::cout << "Non displayable";
 	}
 	std::cout << std::endl;
+	std::cout << "int: ";
+	if ((nLong > std::numeric_limits<int>::max()) || nLong < std::numeric_limits<int>::min())
+	{
+		std::cout << "impossible";
+	}
+	else
+	{
+		std::cout << static_cast<int>(nLong);
+	}
+	std::cout << std::endl;
+	
 	std::cout << nDouble << std::endl;
 	std::cout << nFloat << std::endl;
 	std::cout << nLong << std::endl;
