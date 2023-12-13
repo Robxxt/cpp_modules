@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:45:31 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/13 13:59:50 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/13 15:36:23 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,17 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter& s)
 
 ScalarConverter::~ScalarConverter() {}
 
-void	ScalarConverter::convert(const std::string& s)
+void	ScalarConverter::convert(std::string s)
 {
 	char	*end;
+
 	double	nDouble = static_cast<double>(strtod(s.c_str(), &end));
+
+	if (isSpecial(s) == true)
+	{
+		printSpecial(s);
+		return ;
+	}
 	if (*end != '\0')
 	{
 		if (s.length() == 1)
@@ -35,38 +42,15 @@ void	ScalarConverter::convert(const std::string& s)
 			display_one_char(s);
 			return ;
 		}
-		std::cerr << "Failed conversion " << nDouble << std::endl;
-		return ;
+		else if (inputIsFloatFormat(s))
+		{
+			s.erase(s.size() - 1);
+		}
+		else
+		{
+			std::cerr << "Failed conversion " << nDouble << std::endl;
+			return ;
+		}
 	}
-	float	nFloat = static_cast<float>(nDouble);
-	long	nLong = static_cast<long>(nDouble);
-
-	std::cout << "char: ";
-	if ((nLong > std::numeric_limits<int>::max()) || nLong < std::numeric_limits<int>::min())
-	{
-		std::cout << "impossible";
-	}
-	else if (nLong >= 32 && nLong <= 126)
-	{
-		std::cout << static_cast<char>(nLong);
-	}
-	else
-	{
-		std::cout << "Non displayable";
-	}
-	std::cout << std::endl;
-	std::cout << "int: ";
-	if ((nLong > std::numeric_limits<int>::max()) || nLong < std::numeric_limits<int>::min())
-	{
-		std::cout << "impossible";
-	}
-	else
-	{
-		std::cout << static_cast<int>(nLong);
-	}
-	std::cout << std::endl;
-	
-	std::cout << nDouble << std::endl;
-	std::cout << nFloat << std::endl;
-	std::cout << nLong << std::endl;
+	printNormal(s);
 }

@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:45:33 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/13 13:58:53 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/13 15:21:06 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ private:
 	ScalarConverter(const ScalarConverter& s);
 	ScalarConverter& operator=(const ScalarConverter& s);
 public:
-	static void	convert(const std::string& s);
+	static void	convert(std::string s);
 	~ScalarConverter();
 };
 
