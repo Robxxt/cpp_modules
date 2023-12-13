@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:45:31 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/13 15:36:23 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/13 16:19:07 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	ScalarConverter::convert(std::string s)
 	char	*end;
 
 	double	nDouble = static_cast<double>(strtod(s.c_str(), &end));
+	(void)nDouble;
 
 	if (isSpecial(s) == true)
 	{
@@ -48,7 +49,7 @@ void	ScalarConverter::convert(std::string s)
 		}
 		else
 		{
-			std::cerr << "Failed conversion " << nDouble << std::endl;
+			std::cerr << "[ERROR] INVALID INPUT" << std::endl;
 			return ;
 		}
 	}
