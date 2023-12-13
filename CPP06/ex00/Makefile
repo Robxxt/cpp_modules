@@ -6,13 +6,14 @@
 #    By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/07 10:42:35 by rdragan           #+#    #+#              #
-#    Updated: 2023/12/13 10:50:45 by rdragan          ###   ########.fr        #
+#    Updated: 2023/12/13 13:57:21 by rdragan          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME	=	exe
 SRC		=	main.cpp \
+			utils.cpp \
 			ScalarConverter.cpp
 			
 OBJ		=	$(SRC:.cpp=.o)
