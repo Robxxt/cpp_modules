@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:45:33 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/10 10:49:56 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/13 11:17:54 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 
 # include <iostream>
 # include <string>
-
+# include <cstdlib>
+# include <limits>
 class ScalarConverter
 {
-public:
+private:
 	ScalarConverter();
 	ScalarConverter(const ScalarConverter& s);
 	ScalarConverter& operator=(const ScalarConverter& s);
+public:
 	static void	convert(const std::string& s);
 	~ScalarConverter();
 };

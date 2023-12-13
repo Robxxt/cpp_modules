@@ -6,11 +6,11 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:50:05 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/10 11:16:00 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/13 10:50:55 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.hpp"
+#include "ScalarConverter.hpp"
 
 int	main(int argc, char **argv)
 {
@@ -20,6 +20,5 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	ScalarConverter::convert(argv[1]);
-	test_multiple_getCharOutput();
 	return (0);
 }
