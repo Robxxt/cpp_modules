@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:53:36 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/13 16:22:48 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/13 19:16:00 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	display_one_char(const std::string& s)
 
 bool	isSpecial(const std::string& s)
 {
-	return (s == "nan" || s == "+inf" || s == "-inf" || s == "inf");
+	return (s == "nan" || s == "+inf" || s == "-inf" || s == "inf" || s == "+inff" || s == "-inff" || s == "inff");
 }
 
 void	printSpecial(const std::string& s)
@@ -35,14 +35,14 @@ void	printSpecial(const std::string& s)
 	std::cout << "char: impossible" << std::endl;
 	std::cout << "int: impossible" << std::endl;
 	std::cout << "float: ";
-	if (s == "inf" || s == "-inf" || s == "+inf")
-		std::cout << "impossible";
+	if (s == "+inf" || s == "-inf" || s == "inf" || s == "+inff" || s == "-inff" || s == "inff")
+		std::cout << s;
 	else
 		std::cout << s << "f";
 	std::cout << std::endl;
 	std::cout << "double: ";
-	if (s == "inf" || s == "-inf" || s == "+inf")
-		std::cout << "impossible";
+	if (s == "+inf" || s == "-inf" || s == "inf" || s == "+inff" || s == "-inff" || s == "inff")
+		std::cout << s;
 	else
 		std::cout << s;
 	std::cout << std::endl;
