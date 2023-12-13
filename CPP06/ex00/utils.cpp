@@ -6,24 +6,11 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:53:36 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/13 19:36:50 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/13 20:33:24 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "main.hpp"
-
-void	display_one_char(const std::string& s)
-{
-	char	nChar = static_cast<char>(s[0]);
-	int	nInt = static_cast<int>(s[0]);
-	float	nFloat = static_cast<float>(s[0]);
-	double	nDouble = static_cast<double>(s[0]);
-
-	std::cout << "char: " << nChar << std::endl;
-	std::cout << "int: " << nInt << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(1) << nFloat << "f" << std::endl;
-	std::cout << "double: " << std::fixed << std::setprecision(1) << nDouble << std::endl;
-}
 
 bool	isSpecial(const std::string& s)
 {
@@ -48,42 +35,95 @@ void	printSpecial(const std::string& s)
 	std::cout << std::endl;
 }
 
-// void	printNormal(const std::string& s)
-// {
-// 	char	*end;
-// 	double	nDouble = static_cast<double>(strtod(s.c_str(), &end));
-// 	float	nFloat = static_cast<float>(nDouble);
-// 	long	nLong = static_cast<long>(nDouble);
-
-// 	std::cout << "char: ";
-// 	if ((nLong > std::numeric_limits<int>::max()) || nLong < std::numeric_limits<int>::min())
-// 		std::cout << "impossible";
-// 	else if (nLong >= 32 && nLong <= 126)
-// 		std::cout << static_cast<char>(nLong);
-// 	else
-// 		std::cout << "Non displayable";
-// 	std::cout << std::endl;
-// 	std::cout << "int: ";
-// 	if ((nLong > std::numeric_limits<int>::max()) || nLong < std::numeric_limits<int>::min())
-// 		std::cout << "impossible";
-// 	else
-// 		std::cout << static_cast<int>(nLong);
-// 	std::cout << std::endl;
-// 	std::cout << std::fixed << std::setprecision(1) << "float: ";
-// 	std::cout << nFloat << "f" << std::endl;
-// 	std::cout << std::fixed << std::setprecision(1) << "double: ";
-// 	std::cout << nDouble << std::endl;
-// }
-
 void	printFromChar(const std::string& s)
 {
-	char c = static_cast<char>(s[0]);
-
-	std::cout << "char: " << c << std::endl;
-	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout << "char: " << "Non displayable" << std::endl;
+	std::cout << "int: " << s << std::endl;
 	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << "f" << std::endl;
 	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<float>(c) << std::endl;
 }
+
+void	printFromFloat(const std::string& s)
+{
+	float	d = static_cast<double>(strtod(s.c_str(), NULL));
+	
+	std::cout << "char: ";
+	if (d >= 32 && d <= 126)
+		std::cout << static_cast<char>(d);
+	else if (d > std::numeric_limits<int>::max() || d < std::numeric_limits<int>::min())
+		std::cout << "impossible";
+	else
+		std::cout << "Non displayable";
+	std::cout << std::endl;
+	std::cout << "int: ";
+	if (d > std::numeric_limits<int>::max() || d < std::numeric_limits<int>::min())
+		std::cout << "impossible";
+	else
+		std::cout << static_cast<int>(d);
+	std::cout << std::endl;
+	std::cout << "float: ";
+	if (d > std::numeric_limits<float>::max() || d < std::numeric_limits<float>::min())
+		std::cout << "impossible";
+	else
+		std::cout << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f";
+	std::cout << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<float>(d) << std::endl;
+}
+
+void	printFromDouble(const std::string& s)
+{
+	double	d = static_cast<double>(strtod(s.c_str(), NULL));
+	
+	std::cout << "char: ";
+	if (d >= 32 && d <= 126)
+		std::cout << static_cast<char>(d);
+	else if (d > std::numeric_limits<int>::max() || d < std::numeric_limits<int>::min())
+		std::cout << "impossible";
+	else
+		std::cout << "Non displayable";
+	std::cout << std::endl;
+	std::cout << "int: ";
+	if (d > std::numeric_limits<int>::max() || d < std::numeric_limits<int>::min())
+		std::cout << "impossible";
+	else
+		std::cout << static_cast<int>(d);
+	std::cout << std::endl;
+	std::cout << "float: ";
+	if (d > std::numeric_limits<float>::max() || d < std::numeric_limits<float>::min())
+		std::cout << "impossible";
+	else
+		std::cout << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f";
+	std::cout << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<float>(d) << std::endl;
+}
+
+void	printFromInt(const std::string& s)
+{
+	int	d = static_cast<double>(strtod(s.c_str(), NULL));
+	
+	std::cout << "char: ";
+	if (d >= 32 && d <= 126)
+		std::cout << static_cast<char>(d);
+	else if (d > std::numeric_limits<int>::max() || d < std::numeric_limits<int>::min())
+		std::cout << "impossible";
+	else
+		std::cout << "Non displayable";
+	std::cout << std::endl;
+	std::cout << "int: ";
+	if (d > std::numeric_limits<int>::max() || d < std::numeric_limits<int>::min())
+		std::cout << "impossible";
+	else
+		std::cout << static_cast<int>(d);
+	std::cout << std::endl;
+	std::cout << "float: ";
+	if (d > std::numeric_limits<float>::max() || d < std::numeric_limits<float>::min())
+		std::cout << "impossible";
+	else
+		std::cout << std::fixed << std::setprecision(1) << static_cast<float>(d) << "f";
+	std::cout << std::endl;
+	std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<float>(d) << std::endl;
+}
+
 
 bool	inputIsFloatFormat(const std::string& s)
 {
@@ -93,6 +133,29 @@ bool	inputIsFloatFormat(const std::string& s)
 		if (std::isdigit(s[i]) == false && hasADot == false && s[i] == '.')
 			hasADot = true;
 		else if (std::isdigit(s[i]) == false)
+			return false;
+	}
+	return true;
+}
+
+bool	inputIsDoubleFormat(const std::string& s)
+{
+	bool	hasADot = false;
+	for (int i = 0; i < static_cast<int>(s.length()); i++)
+	{
+		if (std::isdigit(s[i]) == false && hasADot == false && s[i] == '.')
+			hasADot = true;
+		else if (std::isdigit(s[i]) == false)
+			return false;
+	}
+	return true;
+}
+
+bool	inputIsIntFormat(const std::string& s)
+{
+	for (int i = 0; i < static_cast<int>(s.length()); i++)
+	{
+		if (std::isdigit(s[i]) == false)
 			return false;
 	}
 	return true;
