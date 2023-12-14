@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/10 10:45:31 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/13 20:25:10 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/14 10:42:34 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void	ScalarConverter::convert(std::string s)
 		printSpecial(s);
 	else if (s.length() == 1)
 		printFromChar(s);
+	else if (inputIsIntFormat(s))
+		printFromInt(s);
 	else if (inputIsDoubleFormat(s))
 		printFromDouble(s);
 	else if (inputIsFloatFormat(s))
 		printFromFloat(s);
-	else if (inputIsIntFormat(s))
-		printFromInt(s);
 	else
 		std::cerr << "[ERROR] INVALID INPUT" << std::endl;
 }
