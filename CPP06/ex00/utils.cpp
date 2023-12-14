@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 13:53:36 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/14 10:54:59 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/14 10:56:24 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	printFromDouble(const std::string& s)
 	double	d = static_cast<double>(strtod(s.c_str(), NULL));
 	float f = static_cast<float>(d);
 	
+	std::cout << "char: ";
 	if (d >= 32 && d <= 126)
 		std::cout << static_cast<char>(d);
 	else if (d > std::numeric_limits<int>::max() || d < std::numeric_limits<int>::min())
