@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/14 19:20:33 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/16 11:55:40 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/16 12:12:32 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,18 @@ void identify(Base* p)
 {
 	if (dynamic_cast<A*>(p))
 		std::cout << "A" << std::endl;
-	if (dynamic_cast<B*>(p))
+	else if (dynamic_cast<B*>(p))
 		std::cout << "B" << std::endl;
-	if (dynamic_cast<C*>(p))
+	else if (dynamic_cast<C*>(p))
 		std::cout << "C" << std::endl;
 }
 
 void identify(Base& p)
 {
-	(void)p;
+	if (dynamic_cast<A*>(&p))
+		std::cout << "A" << std::endl;
+	if (dynamic_cast<B*>(&p))
+		std::cout << "B" << std::endl;
+	if (dynamic_cast<C*>(&p))
+		std::cout << "C" << std::endl;
 }
