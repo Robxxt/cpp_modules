@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:31:58 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/19 13:09:23 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/19 13:42:34 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ class	Span
 		~Span();
 		void	addNumber(int n);
 		void	print() const; // TO REMOVE
+		int		shortestSpan() const;
+		int		longestSpan() const;
 };
 
 #endif
