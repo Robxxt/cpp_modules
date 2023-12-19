@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:36:04 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/19 14:29:19 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/19 14:58:17 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,13 @@ int		Span::longestSpan() const
 	return (_max - _min);
 }
 
-void	Span::addMultipleConsecutiveNumbers(unsigned int N)
+void	Span::addRange(unsigned int N)
 {
 	if (N > _N)
 		throw std::out_of_range("Too many items for the size of this Span");
-	for (unsigned int i = 0; i < N; i++)
+	for (int *it = _list; it != _list + N; ++it)
 	{
-		addNumber(static_cast<int>(i));
+		addNumber(static_cast<int>(it - _list));
 	}
 }
 
