@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:28:47 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/19 14:08:00 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/19 14:13:09 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ int	main(void)
 {
 	Span sp = Span(5);
 	sp.addNumber(6);
-	// sp.addNumber(3);
-	// sp.addNumber(17);
-	// sp.addNumber(9);
-	// sp.addNumber(11);
-	sp.print();
+	sp.addNumber(3);
+	sp.addNumber(17);
+	sp.addNumber(9);
+	sp.addNumber(11);
+	// sp.print();
+	std::cout << sp.shortestSpan() << std::endl;
 	std::cout << sp.longestSpan() << std::endl;
 	return (0);
 }

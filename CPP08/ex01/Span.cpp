@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:36:04 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/19 14:07:43 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/19 14:13:07 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,19 @@ void	Span::print() const // TO REMOVE
 
 int		Span::shortestSpan() const
 {
-	return (0);
+	int	shortest;
+	int	tmp;
+
+	if (_size <= 1)
+		throw std::out_of_range("You don't have enough items to perform longestSpan opperation");
+	shortest = abs(_list[0] - _list[1]);
+	for (unsigned i = 0; i < _size - 1; i++)
+	{
+		tmp = abs(_list[i] - _list[i + 1]);
+		shortest = (shortest > tmp) ? tmp : shortest;
+	}
+	
+	return (shortest);
 }
 
 int		Span::longestSpan() const

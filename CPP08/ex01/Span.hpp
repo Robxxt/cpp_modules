@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:31:58 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/19 13:42:34 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/19 14:11:07 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SPAN_HPP
 
 # include <stdexcept>
+# include <cmath>
 # include <iostream> // TO REMOVE
 
 class	Span
