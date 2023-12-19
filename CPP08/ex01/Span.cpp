@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:36:04 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/19 14:58:17 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/19 15:08:14 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,23 @@ Span::Span(const Span& s) : _N(s._N), _size(s._size), _list(new int [_N]), _max(
 	{
 		_list[i] = s._list[i];
 	}
+}
+
+Span&	Span::operator=(const Span& s)
+{
+	if (this != &s)
+	{
+		_N = s._N;
+		_size = s._size;
+		_max = s._max;
+		_min = s._min;
+		_list = new int [_N];
+		for (unsigned int i = 0; i < s._size; i++)
+		{
+			_list[i] = s._list[i];
+		}
+	}
+	return (*this);
 }
 
 void	Span::addNumber(int n)
