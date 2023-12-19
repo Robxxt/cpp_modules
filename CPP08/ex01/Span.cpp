@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:36:04 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/19 13:11:22 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/19 13:38:42 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,30 @@ Span::Span(const Span& s) : _N(s._N), _size(s._size), _list(new int [_N]), _max(
 void	Span::addNumber(int n)
 {
 	(void)n;
-	if (_size >= _N)
+	if (_size >= _N || _N == 0)
 		throw std::out_of_range("The list is full");
+	if (_size == 0)
+	{
+		_max = n;
+		_min = n;
+	}
+	else if (_min > n)
+		_min = n;
+	else if (_max < n)
+		_max = n;
 	_list[_size] = n;
 	_size++;
 }
 
-void	Span::print() const
+void	Span::print() const // TO REMOVE
 {
+	if (_size == 0)
+	{
+		std::cerr << "The list doesn't have any element" << std::endl;
+		return ;
+	}
+	std::cout << "MAX: " << _max << std::endl;
+	std::cout << "MIN: " << _min << std::endl;
 	for	(unsigned int i = 0; i < _size; i++)
 		std::cout << _list[i] << std::endl;
 }
