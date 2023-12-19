@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:28:47 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/19 14:35:25 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/19 15:01:00 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	testPdfCase()
 	std::cout << "--------------------------------" << std::endl;
 }
 
-void	addRange()
+void	testAddRange()
 {
-	std::cout << "addRange" << std::endl;
+	std::cout << "testAddRange" << std::endl;
 
 	std::cout << "--------------------------------" << std::endl;
 	Span	a(5);
@@ -48,6 +48,6 @@ void	addRange()
 int	main(void)
 {
 	testPdfCase();
-	addRange();
+	testAddRange();
 	return (0);
 }
