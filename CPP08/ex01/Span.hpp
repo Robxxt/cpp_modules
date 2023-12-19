@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:31:58 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/19 14:11:07 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/19 14:18:55 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ class	Span
 		void	print() const; // TO REMOVE
 		int		shortestSpan() const;
 		int		longestSpan() const;
+		void	addMultipleConsecutiveNumbers(unsigned int N);
 };
 
 #endif

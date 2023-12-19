@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:36:04 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/19 14:13:07 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/19 14:29:19 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	Span::print() const // TO REMOVE
 		std::cerr << "The list doesn't have any element" << std::endl;
 		return ;
 	}
+	std::cout << "SIZE: " << _size << std::endl;
 	std::cout << "MAX: " << _max << std::endl;
-	std::cout << "MIN: " << _min << std::endl;
 	for	(unsigned int i = 0; i < _size; i++)
 		std::cout << _list[i] << std::endl;
 }
@@ -79,5 +79,14 @@ int		Span::longestSpan() const
 	return (_max - _min);
 }
 
+void	Span::addMultipleConsecutiveNumbers(unsigned int N)
+{
+	if (N > _N)
+		throw std::out_of_range("Too many items for the size of this Span");
+	for (unsigned int i = 0; i < N; i++)
+	{
+		addNumber(static_cast<int>(i));
+	}
+}
 
 Span::~Span() { delete [] _list; }
