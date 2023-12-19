@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 12:36:04 by rdragan           #+#    #+#             */
-/*   Updated: 2023/12/19 13:43:18 by rdragan          ###   ########.fr       */
+/*   Updated: 2023/12/19 14:07:43 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ int		Span::shortestSpan() const
 
 int		Span::longestSpan() const
 {
+	if (_size <= 1)
+		throw std::out_of_range("You don't have enough items to perform longestSpan opperation");
 	return (_max - _min);
 }
 
