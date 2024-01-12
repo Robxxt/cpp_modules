@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 08:00:45 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 08:55:52 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,17 +35,6 @@ Date&	Date::operator=(const Date& d)
 	return (*this);
 }
 
-bool	Date::operator<(const Date& d) const
-{
-	if (_year > d._year)
-		return false;
-	if (_month > d._month)
-		return false;
-	if (_day > d._day)
-		return false;
-	return true;
-}
-
 bool	Date::operator>(const Date& d) const
 {
 	if (_year < d._year)
@@ -56,6 +45,12 @@ bool	Date::operator>(const Date& d) const
 		return false;
 	return true;
 }
+
+bool	Date::operator<(const Date& d) const
+{
+	return !(*this > d);
+}
+
 
 bool	Date::operator==(const Date& d) const
 {
@@ -143,26 +138,26 @@ void	BitcoinExchange::makeQuery() const
 }
 
 /**/
-bool	BitcoinExchange::isBigger(const std::string& d1, const std::string& d2) const
+bool	BitcoinExchange::isBigger(const std::string& dt1, const std::string& dt2) const
 {
-	Date	date1(d1);
-	Date	date2(d2);
+	Date	date1(dt1);
+	Date	date2(dt2);
 
 	return (date1 > date2);
 }
 
-bool	BitcoinExchange::isSmaller(const std::string& d1, const std::string& d2) const
+bool	BitcoinExchange::isSmaller(const std::string& dt1, const std::string& dt2) const
 {
-	Date	date1(d1);
-	Date	date2(d2);
+	Date	date1(dt1);
+	Date	date2(dt2);
 
 	return (date1 < date2);
 }
 
-bool	BitcoinExchange::isEqual(const std::string& d1, const std::string& d2) const
+bool	BitcoinExchange::isEqual(const std::string& dt1, const std::string& dt2) const
 {
-	Date	date1(d1);
-	Date	date2(d2);
+	Date	date1(dt1);
+	Date	date2(dt2);
 
 	return (date1 == date2);
 }
@@ -171,39 +166,48 @@ bool	BitcoinExchange::isEqual(const std::string& d1, const std::string& d2) cons
 Returns the value of the date that is querried. If the date
 is not in the db, searches the closes lower date.
 */
+#include <unistd.h>
 float	BitcoinExchange::findValue(const std::string& d) const
 {
-	(void)d;
 	std::pair<std::string, float>	tmp;
-	std::pair<std::string, float>	latest;
+	std::pair<std::string, float>	next;
 	bool							start = true;
-
-	for	(std::map<std::string, float>::const_iterator itr = _db.begin(); itr != _db.end(); ++itr)
+	float							out;
+	std::map<std::string, float>::const_iterator itr = _db.begin();
+	while (itr != _db.end())
 	{
 		tmp = *itr;
+	
 		if (start)
 		{
-			latest = tmp;
 			start = false;
 			continue ;
 		}
-		// std::cout << tmp.first << std::endl;
-		if (isBigger(tmp.first, latest.first) && isSmaller(tmp.first, d))  std::cout << tmp.first << std::endl;
-		if (isEqual(tmp.first, d))
+		else if (isEqual(tmp.first, d))
 		{
 			std::cout << tmp.first << ", " << tmp.second << std::endl;
 			return tmp.second;
 		}
+		++itr;
+		if (itr != _db.end())
+		{
+			next = *itr;
+			if (isBigger(next.first, tmp.first) && isSmaller(next.first, d))
+			{
+				out = next.second;
+			}
+		}
 	}
-	return (0);
+	// std::cout << out << std::endl;
+	return (out);
 }
 
 void	BitcoinExchange::printValue(std::pair<std::string, float> query) const
 {
 	(void)query;
-	// std::cout << query.first << " => ";
-	// std::cout << query.second << " = ";
-	// std::cout << query.second * findValue(query.first) << std::endl;
+	std::cout << query.first << " => ";
+	std::cout << query.second << " = ";
+	std::cout << query.second * findValue(query.first) << std::endl;
 }
 
 BitcoinExchange::~BitcoinExchange() {}

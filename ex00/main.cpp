@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:09 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 08:01:56 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 08:54:54 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ void	testCmp(std::string a, std::string b)
 	Date B(b);
 
 	std::cout << "[<] " << a << ", " << b << " => " << (A < B) << std::endl;
-	std::cout << "[>] " << a << ", " << b << " => " << (A > B) << std::endl;
-	std::cout << "[==] " << a << ", " << b << " => " << (A == B) << std::endl;
+	// std::cout << "[>] " << a << ", " << b << " => " << (A > B) << std::endl;
+	// std::cout << "[==] " << a << ", " << b << " => " << (A == B) << std::endl;
 }
 
 int	main(int argc, char **argv)
@@ -86,7 +86,7 @@ int	main(int argc, char **argv)
 	// (void)argv;
 	// testCmp("2012-05-25", "2012-06-25");
 	// testCmp("2012-06-25", "2012-06-24");
-	// testCmp("2012-06-25", "2012-06-25");
+	// testCmp("2012-06-25", "2012-04-25");
 	// testCmp("2015-06-25", "2012-06-24");
 	// testCmp("2009-06-25", "2012-06-24");
 	if (argc != 2 || !isValidFile(argv[1]))
@@ -98,8 +98,8 @@ int	main(int argc, char **argv)
 		try
 		{
 			BitcoinExchange btc(argv[1]);
-			// btc.makeQuery();
-			btc.findValue("2012-06-25");
+			btc.makeQuery();
+			// btc.findValue("2011-01-03");
 		}
 		catch(const std::exception& e)
 		{
