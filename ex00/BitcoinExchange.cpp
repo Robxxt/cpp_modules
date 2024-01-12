@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 07:56:11 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 08:00:45 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,11 +187,11 @@ float	BitcoinExchange::findValue(const std::string& d) const
 			start = false;
 			continue ;
 		}
-		std::cout << tmp.first << std::endl;
+		// std::cout << tmp.first << std::endl;
 		if (isBigger(tmp.first, latest.first) && isSmaller(tmp.first, d))  std::cout << tmp.first << std::endl;
-		else if (isEqual(tmp.first, d))
+		if (isEqual(tmp.first, d))
 		{
-			std::cout << tmp.first << ", " << d << std::endl;
+			std::cout << tmp.first << ", " << tmp.second << std::endl;
 			return tmp.second;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:09 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 07:54:14 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 08:01:56 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,30 +82,30 @@ void	testCmp(std::string a, std::string b)
 
 int	main(int argc, char **argv)
 {
-	(void)argc;
-	(void)argv;
-	// if (argc != 2 || !isValidFile(argv[1]))
-	// {
-	// 	std::cerr << "Error: could not open file" << std::endl;
-	// }
-	// else
-	// {
-	// 	try
-	// 	{
-	// 		BitcoinExchange btc(argv[1]);
-	// 		// btc.makeQuery();
-	// 		btc.findValue("2011-01-03");
-	// 	}
-	// 	catch(const std::exception& e)
-	// 	{
-	// 		std::cerr << e.what() << '\n';
-	// 	}
+	// (void)argc;
+	// (void)argv;
+	// testCmp("2012-05-25", "2012-06-25");
+	// testCmp("2012-06-25", "2012-06-24");
+	// testCmp("2012-06-25", "2012-06-25");
+	// testCmp("2015-06-25", "2012-06-24");
+	// testCmp("2009-06-25", "2012-06-24");
+	if (argc != 2 || !isValidFile(argv[1]))
+	{
+		std::cerr << "Error: could not open file" << std::endl;
+	}
+	else
+	{
+		try
+		{
+			BitcoinExchange btc(argv[1]);
+			// btc.makeQuery();
+			btc.findValue("2012-06-25");
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
 		
-	// }
-	testCmp("2012-05-25", "2012-06-25");
-	testCmp("2012-06-25", "2012-06-24");
-	testCmp("2012-06-25", "2012-06-25");
-	testCmp("2015-06-25", "2012-06-24");
-	testCmp("2009-06-25", "2012-06-24");
+	}
 	return (0);
 }
