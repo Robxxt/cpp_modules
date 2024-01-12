@@ -6,13 +6,13 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 01:45:59 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 02:48:41 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-BitcoinExchange::Date::Date(const std::string& s)
+Date::Date(const std::string& s)
 {
 	std::istringstream iss(s);
     char dash;
@@ -24,7 +24,7 @@ BitcoinExchange::Date::Date(const std::string& s)
 		std::cout << "Valid" << std::endl;
 }
 
-bool	BitcoinExchange::Date::isValid() const
+bool	Date::isValid() const
 {
 	tm date;
     
@@ -42,7 +42,7 @@ bool	BitcoinExchange::Date::isValid() const
 	return (!(_year <= 0 || _month > 12 || _day > 31) && mktime(&date) != -1)? true : false;
 }
 
-BitcoinExchange::Date::~Date() {}
+Date::~Date() {}
 
 BitcoinExchange::BitcoinExchange(const std::string& b)
 {
