@@ -6,13 +6,13 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 06:48:28 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 07:07:44 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-Date::Date() { throw std::runtime_error("Forbidden to initialize Date with default constructor"); }
+Date::Date() {}
 
 Date::Date(const std::string& s)
 {
@@ -87,23 +87,24 @@ BitcoinExchange::BitcoinExchange(const std::string& inputFile) : _inputFile(inpu
 
 	while (std::getline(fileName, line))
 	{
-		if (head == false)
+		if (head)
 		{
-			// Store in a map
-			try
-			{
-				tmp = parseDBLine(line);
-			}
-			catch(const std::exception& e)
-			{
-				std::cerr << "Error: " << e.what() << '\n';
-			}
-			_db.insert(tmp);
-			// std::cout << line << std::endl;
-		}
-		else
 			head = false;
+			continue ;
+		}
+		try
+		{
+			tmp = parseDBLine(line);
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << "Error: " << e.what() << '\n';
+		}
+		_db.insert(tmp);
+		std::cout << tmp.first << ", " << tmp.second << std::endl;
+		// std::cout << line << std::endl;
 	}
+	std::cout << _db.size() << std::endl;
 }
 
 void	BitcoinExchange::makeQuery() const
@@ -129,16 +130,37 @@ void	BitcoinExchange::makeQuery() const
 				std::cerr << "Error: " << e.what() << '\n';
 				toPrint = false;
 			}
-			if (toPrint) std::cout << tmp.first << ", " << tmp.second << std::endl;
+			if (toPrint) printValue(tmp);
 		}
 		else
 			head = false;
 	}
 }
 
-void	BitcoinExchange::printValue() const
+/*
+Returns the value of the date that is querried. If the date
+is not in the db, searches the closes lower date.
+*/
+float	BitcoinExchange::findValue(const std::string& d) const
 {
-	return ;
+	(void)d;
+	// Date	date(d);
+	std::pair<Date, float>	tmp;
+
+	// for	(std::map<Date, float>::const_iterator itr = _db.begin(); itr != _db.end(); ++itr)
+	// {
+	// 	tmp = *itr;
+	// 	std::cout << tmp.second << std::endl;
+	// }
+	return (0);
+}
+
+void	BitcoinExchange::printValue(std::pair<std::string, float> query) const
+{
+	(void)query;
+	// std::cout << query.first << " => ";
+	// std::cout << query.second << " = ";
+	// std::cout << query.second * findValue(query.first) << std::endl;
 }
 
 BitcoinExchange::~BitcoinExchange() {}

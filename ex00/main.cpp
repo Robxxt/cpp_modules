@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:09 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 05:24:08 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 07:00:40 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int	main(int argc, char **argv)
 		{
 			BitcoinExchange btc(argv[1]);
 			btc.makeQuery();
+			btc.findValue("12");
 		}
 		catch(const std::exception& e)
 		{
