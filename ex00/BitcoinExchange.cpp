@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 02:48:41 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 03:07:36 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ Date::Date(const std::string& s)
     iss >> _year >> dash >> _month >> dash >> _day;
 	if (isValid() == false)
 		throw std::invalid_argument("bad input => " + s);
-	else
-		std::cout << "Valid" << std::endl;
 }
 
 bool	Date::isValid() const
@@ -48,11 +46,27 @@ BitcoinExchange::BitcoinExchange(const std::string& b)
 {
 	std::ifstream	fileName(b);
 	std::string		line;
+	bool			head = true;
+	std::pair<std::string, float> tmp;
 
 	while (std::getline(fileName, line))
 	{
-		// Store in a map
-		std::cout << line << std::endl;
+		if (head == false)
+		{
+			// Store in a map
+			try
+			{
+				tmp = parseLine(line);
+			}
+			catch(const std::exception& e)
+			{
+				std::cerr << "Error: " << e.what() << '\n';
+			}
+			std::cout << tmp.first << ", " << tmp.second << std::endl;
+			// std::cout << line << std::endl;
+		}
+		else
+			head = false;
 	}
 }
 

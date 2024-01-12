@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:15 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 02:49:17 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 02:59:36 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ public:
 };
 
 float	getFloat(const std::string& s);
+std::pair<std::string, float>	parseLine(const std::string& s);
 
 #endif
