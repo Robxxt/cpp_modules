@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:09 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 03:09:49 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 03:57:39 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ float	getFloat(const std::string& s)
 		if (*itr == '-') throw std::invalid_argument("not a positive number.");
 		if (!std::isdigit(*itr) && *itr != '.') throw std::invalid_argument("expected a number.");
 	}
-	if (result >= INT_MAX || result <= INT_MIN)
+	if (result >= 1000)
 		throw std::invalid_argument("too large a number");
 	return (result);
 }
