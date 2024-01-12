@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:15 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 05:20:16 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 05:34:17 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ public:
 	
 	BitcoinExchange(const std::string& s);
 	~BitcoinExchange();
-	void	makeQuery();
+	void printValue() const;
+	void	makeQuery() const;
 };
 
 bool	isValidFile(const std::string& fileName);

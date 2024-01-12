@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 05:23:48 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 05:34:31 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ BitcoinExchange::BitcoinExchange(const std::string& inputFile) : _inputFile(inpu
 	}
 }
 
-void	BitcoinExchange::makeQuery()
+void	BitcoinExchange::makeQuery() const
 {
 	std::ifstream	fileName(_inputFile);
 	std::string		line;
@@ -130,12 +130,15 @@ void	BitcoinExchange::makeQuery()
 				toPrint = false;
 			}
 			if (toPrint) std::cout << tmp.first << ", " << tmp.second << std::endl;
-
-			// std::cout << line << std::endl;
 		}
 		else
 			head = false;
 	}
+}
+
+void	BitcoinExchange::printValue() const
+{
+	return ;
 }
 
 BitcoinExchange::~BitcoinExchange() {}
