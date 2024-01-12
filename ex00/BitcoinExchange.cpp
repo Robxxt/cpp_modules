@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 08:57:30 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 09:46:02 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ Date&	Date::operator=(const Date& d)
 
 bool	Date::operator>(const Date& d) const
 {
-	if (_year < d._year)
-		return false;
-	if (_month < d._month)
-		return false;
-	if (_day < d._day)
-		return false;
-	return true;
+	if (_year > d._year)
+        return true;
+    else if (_year == d._year && _month > d._month)
+        return true;
+    else if (_year == d._year && _month == d._month && _day > d._day)
+        return true;
+    return false;
 }
 
 bool	Date::operator<(const Date& d) const
@@ -137,7 +137,6 @@ void	BitcoinExchange::makeQuery() const
 	}
 }
 
-/**/
 bool	BitcoinExchange::isBigger(const std::string& dt1, const std::string& dt2) const
 {
 	Date	date1(dt1);
@@ -194,7 +193,6 @@ float	BitcoinExchange::findValue(const std::string& d) const
 			}
 		}
 	}
-	// std::cout << out << std::endl;
 	return (out);
 }
 
