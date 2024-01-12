@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:09 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/03 02:44:39 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 01:26:25 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,18 @@ bool	isValidFile(const std::string& fileName)
 
 int	main(int argc, char **argv)
 {
-	if (argc != 2 || !isValidFile(argv[1]))
-	{
-		std::cerr << "Error: could not open file" << std::endl;
-	}
-	else
-	{
-		std::cout << "You can read from the file" << std::endl;
-		BitcoinExchange btc(argv[1]);
-	}
+	(void)argc;
+	(void)argv;
+	BitcoinExchange::Date d("1999-12-09");
+	std::cout << d.isValid() << std::endl;
+	// if (argc != 2 || !isValidFile(argv[1]))
+	// {
+	// 	std::cerr << "Error: could not open file" << std::endl;
+	// }
+	// else
+	// {
+	// 	std::cout << "You can read from the file" << std::endl;
+	// 	BitcoinExchange btc(argv[1]);
+	// }
 	return (0);
 }
