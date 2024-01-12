@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:15 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 07:43:09 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 10:09:19 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <string>
 # include <iostream>
 # include <fstream>
-# include <ctime>
+# include <cctype>
 # include <sstream>
 # include <stdexcept>
 
@@ -38,6 +38,7 @@ class	Date
 		bool	isValid() const;
 		~Date();
 };
+
 class BitcoinExchange
 {
 private:

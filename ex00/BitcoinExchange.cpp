@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 09:46:02 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 10:10:39 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,19 @@ Date::Date() {}
 Date::Date(const std::string& s)
 {
 	std::istringstream iss(s);
+	std::istringstream iss2(s);
     char dash;
+    std::string tmp;
 
     iss >> _year >> dash >> _month >> dash >> _day;
+    while (std::getline(iss2, tmp, '-'))
+	{
+		for (size_t i = 0; i < tmp.length(); i++)
+		{
+			if (!std::isdigit(tmp[i]))
+				throw std::invalid_argument("bad input => " + s);
+		}
+	}
 	if (isValid() == false)
 		throw std::invalid_argument("bad input => " + s);
 }
