@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 01:44:58 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 01:45:59 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ BitcoinExchange::Date::Date(const std::string& s)
 
     iss >> _year >> dash >> _month >> dash >> _day;
 	if (isValid() == false)
-		std::cout << "Not valid" << std::endl;
+		throw std::invalid_argument("bad input => " + s);
 	else
 		std::cout << "Valid" << std::endl;
 }

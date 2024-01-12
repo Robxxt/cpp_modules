@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:15 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 01:20:09 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 01:45:37 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <fstream>
 # include <ctime>
 # include <sstream>
-
+# include <stdexcept>
 class BitcoinExchange
 {
 private:
