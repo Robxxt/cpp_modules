@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 05:21:26 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 05:23:48 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ BitcoinExchange::BitcoinExchange(const std::string& inputFile) : _inputFile(inpu
 	std::ifstream	fileName("data.csv");
 	std::string		line;
 	bool			head = true;
-	bool			toPrint = false;
 	std::pair<std::string, float> tmp;
 
 	while (std::getline(fileName, line))
@@ -94,15 +93,12 @@ BitcoinExchange::BitcoinExchange(const std::string& inputFile) : _inputFile(inpu
 			try
 			{
 				tmp = parseDBLine(line);
-				toPrint = true;
 			}
 			catch(const std::exception& e)
 			{
 				std::cerr << "Error: " << e.what() << '\n';
-				toPrint = false;
 			}
-			if (toPrint) std::cout << tmp.first << ", " << tmp.second << std::endl;
-
+			_db.insert(tmp);
 			// std::cout << line << std::endl;
 		}
 		else
