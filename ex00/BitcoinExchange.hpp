@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:15 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 05:05:34 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 05:20:16 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ public:
 	void	makeQuery();
 };
 
+bool	isValidFile(const std::string& fileName);
 float	getFloat(const std::string& s, bool maxThousend);
 std::pair<std::string, float>	parseDBLine(const std::string& s);
 std::pair<std::string, float>	parseLine(const std::string& s);

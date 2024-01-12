@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 05:07:28 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 05:21:26 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ Date::~Date() {}
 
 BitcoinExchange::BitcoinExchange(const std::string& inputFile) : _inputFile(inputFile)
 {
+	if (!isValidFile("data.csv")) throw std::runtime_error("There is no database");
 	std::ifstream	fileName("data.csv");
 	std::string		line;
 	bool			head = true;
