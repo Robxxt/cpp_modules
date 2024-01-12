@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 05:34:31 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 06:48:28 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,24 @@ Date&	Date::operator=(const Date& d)
 
 bool	Date::operator<(const Date& d) const
 {
-	if (_year < d._year)
-		return true;
-	if (_month < d._month)
-		return true;
-	if (_day < d._day)
-		return true;
-	return false;
+	if (_year > d._year)
+		return false;
+	if (_month > d._month)
+		return false;
+	if (_day > d._day)
+		return false;
+	return true;
 }
 
 bool	Date::operator>(const Date& d) const
 {
-	if (_year > d._year)
-		return true;
-	if (_month > d._month)
-		return true;
-	if (_day > d._day)
-		return true;
-	return false;
+	if (_year < d._year)
+		return false;
+	if (_month < d._month)
+		return false;
+	if (_day < d._day)
+		return false;
+	return true;
 }
 
 bool	Date::isValid() const
