@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 04:35:42 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 05:07:28 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,34 @@ Date::~Date() {}
 
 BitcoinExchange::BitcoinExchange(const std::string& inputFile) : _inputFile(inputFile)
 {
+	std::ifstream	fileName("data.csv");
+	std::string		line;
+	bool			head = true;
+	bool			toPrint = false;
+	std::pair<std::string, float> tmp;
+
+	while (std::getline(fileName, line))
+	{
+		if (head == false)
+		{
+			// Store in a map
+			try
+			{
+				tmp = parseDBLine(line);
+				toPrint = true;
+			}
+			catch(const std::exception& e)
+			{
+				std::cerr << "Error: " << e.what() << '\n';
+				toPrint = false;
+			}
+			if (toPrint) std::cout << tmp.first << ", " << tmp.second << std::endl;
+
+			// std::cout << line << std::endl;
+		}
+		else
+			head = false;
+	}
 }
 
 void	BitcoinExchange::makeQuery()
@@ -96,7 +124,7 @@ void	BitcoinExchange::makeQuery()
 			// Store in a map
 			try
 			{
-				tmp = parseLine(line, true);
+				tmp = parseLine(line);
 				toPrint = true;
 			}
 			catch(const std::exception& e)

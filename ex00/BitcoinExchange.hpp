@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:15 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 04:35:57 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 05:05:34 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ public:
 };
 
 float	getFloat(const std::string& s, bool maxThousend);
-std::pair<std::string, float>	parseLine(const std::string& s, bool notDB);
-
+std::pair<std::string, float>	parseDBLine(const std::string& s);
+std::pair<std::string, float>	parseLine(const std::string& s);
 
 #endif

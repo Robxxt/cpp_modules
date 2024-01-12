@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:09 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 04:36:09 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 05:12:47 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,28 @@ bool	isValidFile(const std::string& fileName)
 	return (file.good());
 }
 
-std::pair<std::string, float>	parseLine(const std::string& s, bool notDB)
+std::pair<std::string, float>	parseDBLine(const std::string& s)
+{
+	std::istringstream	iss(s);
+	std::string			tmp;
+	std::string			dateString;
+	std::string			valueString;
+	int					i = 0;
+
+	while (std::getline(iss, tmp, ','))
+	{
+		if (i == 0)
+			dateString = tmp;
+		else
+			valueString = tmp;
+		i++;
+	}
+	/* I call Date constructor just in case the date is invalid to throw the exception */
+	Date	d(dateString);
+	return std::pair<std::string, float>(dateString, getFloat(valueString, false));
+}
+
+std::pair<std::string, float>	parseLine(const std::string& s)
 {
 	std::istringstream	iss(s);
 	std::string			dateString;
@@ -46,7 +67,7 @@ std::pair<std::string, float>	parseLine(const std::string& s, bool notDB)
 	iss >> dateString >> placeholder >> valueString;
 	/* I call Date constructor just in case the date is invalid to throw the exception */
 	Date	d(dateString);
-	return std::pair<std::string, float>(dateString, getFloat(valueString, notDB));
+	return std::pair<std::string, float>(dateString, getFloat(valueString, true));
 }
 
 int	main(int argc, char **argv)
@@ -62,7 +83,7 @@ int	main(int argc, char **argv)
 	{
 		std::cout << "You can read from the file" << std::endl;
 		BitcoinExchange btc(argv[1]);
-		btc.makeQuery();
+		// btc.makeQuery();
 	}
 	return (0);
 }
