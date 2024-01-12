@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:15 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 04:15:16 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 04:30:14 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,20 @@ class	Date
 		int	_year;
 		int	_month;
 		int	_day;
-		Date();
-		Date(const Date& d);
-		Date& operator=(const Date& d);
 	public:
+		Date();
 		Date(const std::string& s);
+		Date(const Date& d);
+		Date&	operator=(const Date& d);
+		bool	operator<(const Date& d) const;
+		bool	operator>(const Date& d) const;
 		bool	isValid() const;
 		~Date();
 };
 class BitcoinExchange
 {
 private:
-	std::map<Date, float> _inputMap;
+	std::map<Date, float> _db;
 	// Make a map
 	BitcoinExchange();
 	BitcoinExchange(const BitcoinExchange& b); // IMPLEMENT LATER
@@ -49,7 +51,8 @@ public:
 	~BitcoinExchange();
 };
 
-float	getFloat(const std::string& s);
-std::pair<std::string, float>	parseLine(const std::string& s);
+float	getFloat(const std::string& s, bool maxThousend);
+std::pair<std::string, float>	parseLine(const std::string& s, bool notDB);
+
 
 #endif

@@ -6,13 +6,13 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:09 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 03:57:39 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 04:29:55 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
-float	getFloat(const std::string& s)
+float	getFloat(const std::string& s, bool maxThousend)
 {
 	std::istringstream	iss(s);
 	float				result;
@@ -25,7 +25,7 @@ float	getFloat(const std::string& s)
 		if (*itr == '-') throw std::invalid_argument("not a positive number.");
 		if (!std::isdigit(*itr) && *itr != '.') throw std::invalid_argument("expected a number.");
 	}
-	if (result >= 1000)
+	if (maxThousend && result >= 1000)
 		throw std::invalid_argument("too large a number");
 	return (result);
 }
@@ -36,7 +36,7 @@ bool	isValidFile(const std::string& fileName)
 	return (file.good());
 }
 
-std::pair<std::string, float>	parseLine(const std::string& s)
+std::pair<std::string, float>	parseLine(const std::string& s, bool notDB)
 {
 	std::istringstream	iss(s);
 	std::string			dateString;
@@ -46,7 +46,7 @@ std::pair<std::string, float>	parseLine(const std::string& s)
 	iss >> dateString >> placeholder >> valueString;
 	/* I call Date constructor just in case the date is invalid to throw the exception */
 	Date	d(dateString);
-	return std::pair<std::string, float>(dateString, getFloat(valueString));
+	return std::pair<std::string, float>(dateString, getFloat(valueString, notDB));
 }
 
 int	main(int argc, char **argv)

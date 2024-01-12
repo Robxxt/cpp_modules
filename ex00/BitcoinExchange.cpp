@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 04:15:15 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 04:32:36 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,28 @@ Date&	Date::operator=(const Date& d)
 	return (*this);
 }
 
+bool	Date::operator<(const Date& d) const
+{
+	if (_year < d._year)
+		return true;
+	if (_month < d._month)
+		return true;
+	if (_day < d._day)
+		return true;
+	return false;
+}
+
+bool	Date::operator>(const Date& d) const
+{
+	if (_year > d._year)
+		return true;
+	if (_month > d._month)
+		return true;
+	if (_day > d._day)
+		return true;
+	return false;
+}
+
 bool	Date::isValid() const
 {
 	tm date;
@@ -60,6 +82,7 @@ BitcoinExchange::BitcoinExchange(const std::string& b)
 	std::ifstream	fileName(b);
 	std::string		line;
 	bool			head = true;
+	bool			toPrint = false;
 	std::pair<std::string, float> tmp;
 
 	while (std::getline(fileName, line))
@@ -69,13 +92,15 @@ BitcoinExchange::BitcoinExchange(const std::string& b)
 			// Store in a map
 			try
 			{
-				tmp = parseLine(line);
+				tmp = parseLine(line, true);
+				toPrint = true;
 			}
 			catch(const std::exception& e)
 			{
 				std::cerr << "Error: " << e.what() << '\n';
+				toPrint = false;
 			}
-			std::cout << tmp.first << ", " << tmp.second << std::endl;
+			if (toPrint) std::cout << tmp.first << ", " << tmp.second << std::endl;
 
 			// std::cout << line << std::endl;
 		}
