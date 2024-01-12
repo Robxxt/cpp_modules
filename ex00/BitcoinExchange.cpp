@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 04:32:36 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 04:35:42 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,9 +77,13 @@ bool	Date::isValid() const
 
 Date::~Date() {}
 
-BitcoinExchange::BitcoinExchange(const std::string& b)
+BitcoinExchange::BitcoinExchange(const std::string& inputFile) : _inputFile(inputFile)
 {
-	std::ifstream	fileName(b);
+}
+
+void	BitcoinExchange::makeQuery()
+{
+	std::ifstream	fileName(_inputFile);
 	std::string		line;
 	bool			head = true;
 	bool			toPrint = false;

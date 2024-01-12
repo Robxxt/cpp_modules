@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:15 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 04:30:14 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 04:35:57 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ class	Date
 class BitcoinExchange
 {
 private:
-	std::map<Date, float> _db;
+	std::map<Date, float>	_db;
+	std::string				_inputFile;
 	// Make a map
 	BitcoinExchange();
 	BitcoinExchange(const BitcoinExchange& b); // IMPLEMENT LATER
@@ -49,6 +50,7 @@ public:
 	
 	BitcoinExchange(const std::string& s);
 	~BitcoinExchange();
+	void	makeQuery();
 };
 
 float	getFloat(const std::string& s, bool maxThousend);

@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:09 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 04:29:55 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 04:36:09 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	main(int argc, char **argv)
 	{
 		std::cout << "You can read from the file" << std::endl;
 		BitcoinExchange btc(argv[1]);
+		btc.makeQuery();
 	}
 	return (0);
 }
