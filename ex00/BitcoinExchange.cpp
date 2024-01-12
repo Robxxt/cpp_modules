@@ -6,11 +6,13 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 03:58:50 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 04:15:15 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+
+Date::Date() { throw std::runtime_error("Forbidden to initialize Date with default constructor"); }
 
 Date::Date(const std::string& s)
 {
@@ -20,6 +22,17 @@ Date::Date(const std::string& s)
     iss >> _year >> dash >> _month >> dash >> _day;
 	if (isValid() == false)
 		throw std::invalid_argument("bad input => " + s);
+}
+
+Date::Date(const Date& d) { *this = d; }
+
+Date&	Date::operator=(const Date& d)
+{
+	_year = d._year;
+	_month = d._month;
+	_day = d._day;
+
+	return (*this);
 }
 
 bool	Date::isValid() const
@@ -63,6 +76,7 @@ BitcoinExchange::BitcoinExchange(const std::string& b)
 				std::cerr << "Error: " << e.what() << '\n';
 			}
 			std::cout << tmp.first << ", " << tmp.second << std::endl;
+
 			// std::cout << line << std::endl;
 		}
 		else

@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:15 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 02:59:36 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 04:15:16 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ class	Date
 class BitcoinExchange
 {
 private:
-	std::map<Date, float> inputMap;
+	std::map<Date, float> _inputMap;
 	// Make a map
 	BitcoinExchange();
 	BitcoinExchange(const BitcoinExchange& b); // IMPLEMENT LATER
