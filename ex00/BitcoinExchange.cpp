@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 07:07:44 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 07:56:11 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,13 @@ bool	Date::operator>(const Date& d) const
 	return true;
 }
 
+bool	Date::operator==(const Date& d) const
+{
+	if (_year == d._year && _month == d._month && _day == d._day)
+		return true;
+	return false;
+}
+
 bool	Date::isValid() const
 {
 	tm date;
@@ -101,10 +108,8 @@ BitcoinExchange::BitcoinExchange(const std::string& inputFile) : _inputFile(inpu
 			std::cerr << "Error: " << e.what() << '\n';
 		}
 		_db.insert(tmp);
-		std::cout << tmp.first << ", " << tmp.second << std::endl;
-		// std::cout << line << std::endl;
 	}
-	std::cout << _db.size() << std::endl;
+	// std::cout << _db.size() << std::endl;
 }
 
 void	BitcoinExchange::makeQuery() const
@@ -137,6 +142,31 @@ void	BitcoinExchange::makeQuery() const
 	}
 }
 
+/**/
+bool	BitcoinExchange::isBigger(const std::string& d1, const std::string& d2) const
+{
+	Date	date1(d1);
+	Date	date2(d2);
+
+	return (date1 > date2);
+}
+
+bool	BitcoinExchange::isSmaller(const std::string& d1, const std::string& d2) const
+{
+	Date	date1(d1);
+	Date	date2(d2);
+
+	return (date1 < date2);
+}
+
+bool	BitcoinExchange::isEqual(const std::string& d1, const std::string& d2) const
+{
+	Date	date1(d1);
+	Date	date2(d2);
+
+	return (date1 == date2);
+}
+
 /*
 Returns the value of the date that is querried. If the date
 is not in the db, searches the closes lower date.
@@ -144,14 +174,27 @@ is not in the db, searches the closes lower date.
 float	BitcoinExchange::findValue(const std::string& d) const
 {
 	(void)d;
-	// Date	date(d);
-	std::pair<Date, float>	tmp;
+	std::pair<std::string, float>	tmp;
+	std::pair<std::string, float>	latest;
+	bool							start = true;
 
-	// for	(std::map<Date, float>::const_iterator itr = _db.begin(); itr != _db.end(); ++itr)
-	// {
-	// 	tmp = *itr;
-	// 	std::cout << tmp.second << std::endl;
-	// }
+	for	(std::map<std::string, float>::const_iterator itr = _db.begin(); itr != _db.end(); ++itr)
+	{
+		tmp = *itr;
+		if (start)
+		{
+			latest = tmp;
+			start = false;
+			continue ;
+		}
+		std::cout << tmp.first << std::endl;
+		if (isBigger(tmp.first, latest.first) && isSmaller(tmp.first, d))  std::cout << tmp.first << std::endl;
+		else if (isEqual(tmp.first, d))
+		{
+			std::cout << tmp.first << ", " << d << std::endl;
+			return tmp.second;
+		}
+	}
 	return (0);
 }
 

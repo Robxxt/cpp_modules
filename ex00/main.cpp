@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:09 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 07:00:40 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 07:54:14 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,28 +70,42 @@ std::pair<std::string, float>	parseLine(const std::string& s)
 	return std::pair<std::string, float>(dateString, getFloat(valueString, true));
 }
 
+void	testCmp(std::string a, std::string b)
+{
+	Date A(a);
+	Date B(b);
+
+	std::cout << "[<] " << a << ", " << b << " => " << (A < B) << std::endl;
+	std::cout << "[>] " << a << ", " << b << " => " << (A > B) << std::endl;
+	std::cout << "[==] " << a << ", " << b << " => " << (A == B) << std::endl;
+}
+
 int	main(int argc, char **argv)
 {
-	// (void)argc;
-	// (void)argv;
-	// Date d("1999-12-09");
-	if (argc != 2 || !isValidFile(argv[1]))
-	{
-		std::cerr << "Error: could not open file" << std::endl;
-	}
-	else
-	{
-		try
-		{
-			BitcoinExchange btc(argv[1]);
-			btc.makeQuery();
-			btc.findValue("12");
-		}
-		catch(const std::exception& e)
-		{
-			std::cerr << e.what() << '\n';
-		}
+	(void)argc;
+	(void)argv;
+	// if (argc != 2 || !isValidFile(argv[1]))
+	// {
+	// 	std::cerr << "Error: could not open file" << std::endl;
+	// }
+	// else
+	// {
+	// 	try
+	// 	{
+	// 		BitcoinExchange btc(argv[1]);
+	// 		// btc.makeQuery();
+	// 		btc.findValue("2011-01-03");
+	// 	}
+	// 	catch(const std::exception& e)
+	// 	{
+	// 		std::cerr << e.what() << '\n';
+	// 	}
 		
-	}
+	// }
+	testCmp("2012-05-25", "2012-06-25");
+	testCmp("2012-06-25", "2012-06-24");
+	testCmp("2012-06-25", "2012-06-25");
+	testCmp("2015-06-25", "2012-06-24");
+	testCmp("2009-06-25", "2012-06-24");
 	return (0);
 }

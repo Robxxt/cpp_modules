@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:15 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 07:08:29 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 07:43:09 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class	Date
 		Date&	operator=(const Date& d);
 		bool	operator<(const Date& d) const;
 		bool	operator>(const Date& d) const;
+		bool	operator==(const Date& d) const;
 		bool	isValid() const;
 		~Date();
 };
@@ -41,7 +42,7 @@ class BitcoinExchange
 {
 private:
 	std::map<std::string, float>	_db;
-	std::string				_inputFile;
+	std::string						_inputFile;
 	// Make a map
 	BitcoinExchange();
 	BitcoinExchange(const BitcoinExchange& b); // IMPLEMENT LATER
@@ -52,6 +53,9 @@ public:
 	~BitcoinExchange();
 	void 	printValue(std::pair<std::string, float> query) const;
 	void	makeQuery() const;
+	bool	isBigger(const std::string& d1, const std::string& d2) const;
+	bool	isSmaller(const std::string& d1, const std::string& d2) const;
+	bool	isEqual(const std::string& d1, const std::string& d2) const;
 	float	findValue(const std::string& d) const;
 };
 
