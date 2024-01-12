@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 01:28:08 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/12 01:44:58 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ bool	BitcoinExchange::Date::isValid() const
     date.tm_mday = _day;
 
     /*
-	Try to convert the date to t_time. If it fails it means
-	that the date is not valid.
+	Check if the date is outside any rational input values.
+	Convert to t_time with mktime and verify if that
+	day of that month of that year does actually exists.
 	*/
-	return (!(_month > 12 || _day > 31) && mktime(&date) != -1)? true : false;
+	return (!(_year <= 0 || _month > 12 || _day > 31) && mktime(&date) != -1)? true : false;
 }
 
 BitcoinExchange::Date::~Date() {}
