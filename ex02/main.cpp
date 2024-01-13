@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/13 17:55:25 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/13 18:03:54 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include <iostream>
 #include <vector>
 #include <cctype>
+#include <stdexcept>
+#include <cstdlib>
 
 bool	isValidNumber(const std::string& in)
 {
@@ -25,10 +27,22 @@ bool	isValidNumber(const std::string& in)
 	return true;
 }
 
-// std::vector<int>	readInput(char **argv)
-// {
-	
-// }
+std::vector<int>	readInput(int argc, char **argv)
+{
+	std::vector<int>	v;
+	for (int i = 1; i < argc; i++)
+	{
+		if (!isValidNumber(argv[i])) throw std::invalid_argument("The list has an invalid item.");
+		v.push_back(atoi(argv[i]));
+	}
+	return v;
+}
+
+void	printList(std::vector<int> lst)
+{
+	for (std::vector<int>::iterator itr = lst.begin(); itr != lst.end(); ++itr)
+		std::cout << *itr << std::endl;
+}
 
 void	testNumber(const std::string& n, bool expect)
 {
@@ -48,7 +62,6 @@ void	test()
 
 int	main(int argc, char **argv)
 {
-	test();
 	if (argc <= 2)
 	{
 		std::cerr << "[ERROR]: There's nothing to sort :(" << std::endl;
@@ -57,12 +70,13 @@ int	main(int argc, char **argv)
 	try
 	{
 		(void)argv[1];
-		// std::vector<int> lst = readInput(argv);
+		std::vector<int> lst = readInput(argc, argv);
+		printList(lst);
 		// PmergeMe();
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << e.what() << '\n';
+		std::cerr << "[ERROR]: " << e.what() << '\n';
 	}
 	
 }

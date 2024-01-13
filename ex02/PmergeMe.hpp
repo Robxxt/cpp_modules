@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:41:39 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/13 17:46:27 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/13 17:59:34 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <vector>
 # include <list>
+# include <stdexcept>
 
 class PmergeMe
 {
