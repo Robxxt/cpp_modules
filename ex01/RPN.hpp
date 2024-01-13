@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 01:10:59 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/13 01:24:00 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/13 01:52:08 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <iostream>
 # include <string>
 # include <sstream>
+# include <stdexcept>
 
 class RPN
 {
@@ -30,5 +31,7 @@ public:
 	RPN(const std::string& in);
 	~RPN();
 };
+
+bool	valid_item(const std::string& item);
 
 #endif
