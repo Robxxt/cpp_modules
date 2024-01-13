@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:09 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 10:04:25 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/13 03:18:47 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ float	getFloat(const std::string& s, bool maxThousend)
 
 bool	isValidFile(const std::string& fileName)
 {
-	std::ifstream file(fileName);
+	std::ifstream file(fileName.c_str());
 	return (file.good());
 }
 

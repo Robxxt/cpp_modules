@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/12 10:10:39 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/13 03:19:14 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ BitcoinExchange::BitcoinExchange(const std::string& inputFile) : _inputFile(inpu
 
 void	BitcoinExchange::makeQuery() const
 {
-	std::ifstream	fileName(_inputFile);
+	std::ifstream	fileName(_inputFile.c_str());
 	std::string		line;
 	bool			head = true;
 	bool			toPrint = false;
