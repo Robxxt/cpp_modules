@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/13 18:03:54 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/13 18:06:51 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ int	main(int argc, char **argv)
 	{
 		(void)argv[1];
 		std::vector<int> lst = readInput(argc, argv);
-		printList(lst);
-		// PmergeMe();
+		PmergeMe program(lst);
 	}
 	catch(const std::exception& e)
 	{

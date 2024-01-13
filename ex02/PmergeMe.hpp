@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:41:39 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/13 17:59:34 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/13 18:05:22 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,10 @@ private:
 	PmergeMe(const PmergeMe& p);
 	PmergeMe& operator=(const PmergeMe& p);
 public:
-	PmergeMe(std::vector<int>);
+	PmergeMe(const std::vector<int>& lst);
 	~PmergeMe();
 };
+
+void	printList(std::vector<int> lst);
 
 #endif
