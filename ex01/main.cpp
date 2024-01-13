@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 01:10:42 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/13 01:53:44 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/13 02:39:14 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,31 +26,17 @@ bool	valid_item(const std::string& item)
 	return (true);
 }
 
-// void	test_valid_item(const std::string& s, bool expect)
-// {
-// 	std::cout << ((valid_item(s) == expect) ? "[ok]" : ("[ko]: " + s)) << std::endl;
-// }
-
-// void	test()
-// {
-// 	test_valid_item("+", true);
-// 	test_valid_item("+1", false);
-// 	test_valid_item("-", true);
-// 	test_valid_item("-2", false);
-// 	test_valid_item("10", false);
-// 	test_valid_item("9", true);
-// 	test_valid_item("12", false);
-// 	test_valid_item("*2", false);
-// 	test_valid_item("*", true);
-// 	test_valid_item("/", true);
-// 	test_valid_item("`", false);
-// 	test_valid_item("^", false);
-// 	test_valid_item("--", false);
-// }
+int	operation(char o, int num[2])
+{
+	if (o == '+') return num[0] + num[1];
+	if (o == '-') return num[0] - num[1];
+	if (o == '*') return num[0] * num[1];
+	if (o == '/') return num[0] / num[1];
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
-	// test();
 	if (argc != 2)
 	{
 		std::cerr << ((argc == 1) ? "[ERROR]: You must provide one argument!" : "[ERROR]: Too many arguments!") << std::endl;
@@ -59,6 +45,7 @@ int	main(int argc, char **argv)
 	try
 	{
 		RPN	rpn(argv[1]);
+		rpn.displayResult();
 	}
 	catch (const std::exception& e)
 	{
