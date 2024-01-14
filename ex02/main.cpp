@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/14 04:29:39 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/14 05:02:10 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,21 @@ void	mergeSort(std::vector<int>& lst, int l, int r)
 	}
 }
 
+void	binaryInsert(std::vector<int>& lst, int num)
+{
+	int	l = 0;
+	int	r = lst.size() - 1;
+
+	while (l <= r)
+	{
+		int m = l + (r - l) / 2;
+		if (num == lst[m]) break;
+		if (num > lst[m]) l = m + 1;
+		else r = m - 1;
+	}
+	lst.insert(lst.begin() + l, num);
+}
+
 int	main(int argc, char **argv)
 {
 	(void)argc;
@@ -85,6 +100,11 @@ int	main(int argc, char **argv)
 	for (int i = 0; i < length; i++) array.push_back(tmp[i]);
 	
 	mergeSort(array, 0, array.size() - 1);
+	std::cout << array.size() << std::endl;
+	binaryInsert(array, 47);
+	binaryInsert(array, 4);
+	binaryInsert(array, 4);
+	std::cout << array.size() << std::endl;
 	for (size_t i = 0; i < array.size(); i++)
 	{
 		std::cout << array[i] << " ";
