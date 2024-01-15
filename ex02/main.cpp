@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/15 17:18:14 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/15 17:40:26 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,10 +110,24 @@ std::vector< std::pair<int, int> >	getPairArray(std::vector<int>& array)
 	return res;
 }
 
-// void	insert(std::vector< std::pair<int, int> >& lst)
-// {
-// 	binaryInsert()
-// }
+int	t(int k)
+{
+	return ((pow(2, k + 1) + pow(-1, k)) / 3);
+}
+
+void	insert(std::vector< std::pair<int, int> >& lst)
+{
+	std::vector< std::pair<int, int> >::iterator itr;
+	for (itr = lst.begin(); itr != lst.end(); ++itr)
+	{
+		if ((*itr).second >= 0)
+		{
+			binaryInsert(lst, (*itr).second);
+			++itr;
+		}
+	}
+	
+}
 
 int	main(int argc, char **argv)
 {
@@ -130,7 +144,9 @@ int	main(int argc, char **argv)
 	std::cout << "------------" << std::endl;
 	binaryInsert(pairArray, 23);
 	mergeSort(pairArray, 0, pairArray.size() - 1);
+	insert(pairArray);
 	printList(pairArray);
+	std::cout << t(4) << std::endl;
 	// if (argc <= 2)
 	// {
 	// 	std::cerr << "[ERROR]: There's nothing to sort :(" << std::endl;
