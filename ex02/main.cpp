@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 00:09:01 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 00:35:00 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,14 +152,7 @@ void	insertBatch(std::vector<int>& lstA, std::vector<int>& lstB, size_t tk, size
 	size_t	len = lstB.size();
 	size_t	i = (tk >= len) ? len - 1 : tk;
 	(void)lstA;
-	std::cout << "tk: " << tk << "\t" << "len: " << len << "\t";
-	std::cout << "start point: " << i << " last index: " << lastBIndex << std::endl;
-	for (; i >= lastBIndex; i--)
-	{
-		binaryInsert(lstA, lstB[i]);
-		std::cout << "insert -> " << lstB[i] << std::endl;
-	}
-	
+	for (; i >= lastBIndex; i--) binaryInsert(lstA, lstB[i]);
 }
 
 void	insert(std::vector<int>& lstA, std::vector<int>& lstB)
