@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/14 05:02:10 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/15 16:45:12 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,26 @@ std::vector<int>	readInput(int argc, char **argv)
 	return v;
 }
 
-void	printList(std::vector<int> lst)
+void	printList(std::vector< std::pair<int, int> >& lst)
 {
-	for (std::vector<int>::iterator itr = lst.begin(); itr != lst.end(); ++itr)
-		std::cout << *itr << std::endl;
+	std::vector< std::pair<int, int> >::iterator itr;
+	for (itr = lst.begin(); itr != lst.end(); ++itr)
+		std::cout << "( " << (*itr).first << ", " << (*itr).second << " )" << std::endl;
 }
 
-void	combineSortedArrays(std::vector<int>& lst, int l, int m, int r)
+void	combineSortedArrays(std::vector< std::pair<int, int> >& lst, int l, int m, int r)
 {
 	int	leftLen = m - l + 1;
 	int	rightLen = r - m;
-	std::vector<int> leftCopy(leftLen);
-	std::vector<int> rightCopy(rightLen);
+	std::vector< std::pair<int, int> > leftCopy(leftLen);
+	std::vector< std::pair<int, int> > rightCopy(rightLen);
 	int	i, j, k;
 
 	for (int i = 0; i < leftLen; i++) leftCopy[i] = lst[l + i];
 	for (int i = 0; i < rightLen; i++) rightCopy[i] = lst[i + m + 1];
 	for (i = 0, j = 0, k = l; i < leftLen && j < rightLen; k++)
 	{
-		if (leftCopy[i] <= rightCopy[j]) lst[k] = leftCopy[i++];
+		if (leftCopy[i].first <= rightCopy[j].first) lst[k] = leftCopy[i++];
 		else lst[k] = rightCopy[j++];
 	}
 	/* If there are any items from leftCopy or rightCopy insert them in the lst */
@@ -64,7 +65,7 @@ void	combineSortedArrays(std::vector<int>& lst, int l, int m, int r)
 	while (j < rightLen) lst[k++] = rightCopy[j++];
 }
 
-void	mergeSort(std::vector<int>& lst, int l, int r)
+void	mergeSort(std::vector< std::pair<int, int> >& lst, int l, int r)
 {
 	if (l < r)
 	{
@@ -90,26 +91,39 @@ void	binaryInsert(std::vector<int>& lst, int num)
 	lst.insert(lst.begin() + l, num);
 }
 
+std::vector< std::pair<int, int> >	getPairArray(std::vector<int>& array)
+{
+	std::vector< std::pair<int, int> >	res;
+	size_t								len = array.size();
+
+	for (size_t i = 0; i < len - 1; i+=2)
+	{
+		std::pair<int, int>	tmp(array[i], array[i+1]);
+		res.push_back(tmp);
+	}
+	if (len % 2 != 0)
+	{
+		std::pair<int, int>	tmp(array[len - 1], -1);
+		res.push_back(tmp);
+	}
+	return res;
+}
+
 int	main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	int	tmp[] = {9,44,8,1,7,0,3,2,5,6};
+	int	tmp[] = {9,44,8,1,7,0,3,2,5,6,25};
 	std::vector<int>	array;
-	int length = 10;
+	int length = 11;
 	for (int i = 0; i < length; i++) array.push_back(tmp[i]);
 	
-	mergeSort(array, 0, array.size() - 1);
-	std::cout << array.size() << std::endl;
-	binaryInsert(array, 47);
-	binaryInsert(array, 4);
-	binaryInsert(array, 4);
-	std::cout << array.size() << std::endl;
-	for (size_t i = 0; i < array.size(); i++)
-	{
-		std::cout << array[i] << " ";
-	}
-	std::cout << std::endl;
+	std::vector< std::pair<int, int> > pairArray;
+	pairArray = getPairArray(array);
+	printList(pairArray);
+	std::cout << "------------" << std::endl;
+	mergeSort(pairArray, 0, pairArray.size() - 1);
+	printList(pairArray);
 	// if (argc <= 2)
 	// {
 	// 	std::cerr << "[ERROR]: There's nothing to sort :(" << std::endl;
