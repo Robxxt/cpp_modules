@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/15 23:33:56 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/15 23:43:56 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,10 +150,10 @@ std::vector<int>	getListB(std::vector< std::pair<int, int> >& lst)
 void	insertBatch(std::vector<int>& lstA, std::vector<int>& lstB, size_t tk, size_t lastBIndex)
 {
 	size_t	len = lstB.size();
-	size_t	i = (tk >= len) ? lastBIndex : tk;
+	size_t	i = (tk >= len) ? len - 1 : tk;
 	(void)lstA;
-	// std::cout << "tk: " << tk << "\t";
-	// std::cout << "start point: " << i << std::endl;
+	std::cout << "tk: " << tk << "\t" << "len: " << len << "\t";
+	std::cout << "start point: " << i << " last index: " << lastBIndex << std::endl;
 	for (; i >= lastBIndex; i--)
 	{
 		binaryInsert(lstA, lstB[i]);
@@ -197,7 +197,7 @@ int	main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	int	tmp[] = {9,44,8,1,7,0,3,2,5,6,25,7,4,21,13,32};
+	int	tmp[] = {9,44,8};
 	std::vector<int>	array;
 	int length = sizeof(tmp) / sizeof(int);
 	for (int i = 0; i < length; i++) array.push_back(tmp[i]);
