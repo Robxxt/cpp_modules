@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/15 16:45:12 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/15 17:18:14 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	mergeSort(std::vector< std::pair<int, int> >& lst, int l, int r)
 	}
 }
 
-void	binaryInsert(std::vector<int>& lst, int num)
+void	binaryInsert(std::vector< std::pair<int, int> >& lst, int num)
 {
 	int	l = 0;
 	int	r = lst.size() - 1;
@@ -84,11 +84,12 @@ void	binaryInsert(std::vector<int>& lst, int num)
 	while (l <= r)
 	{
 		int m = l + (r - l) / 2;
-		if (num == lst[m]) break;
-		if (num > lst[m]) l = m + 1;
+		if (num == lst[m].first) break;
+		if (num > lst[m].first) l = m + 1;
 		else r = m - 1;
 	}
-	lst.insert(lst.begin() + l, num);
+	std::pair<int, int> tmp(num, -1);
+	lst.insert(lst.begin() + l, tmp);
 }
 
 std::vector< std::pair<int, int> >	getPairArray(std::vector<int>& array)
@@ -109,6 +110,11 @@ std::vector< std::pair<int, int> >	getPairArray(std::vector<int>& array)
 	return res;
 }
 
+// void	insert(std::vector< std::pair<int, int> >& lst)
+// {
+// 	binaryInsert()
+// }
+
 int	main(int argc, char **argv)
 {
 	(void)argc;
@@ -122,6 +128,7 @@ int	main(int argc, char **argv)
 	pairArray = getPairArray(array);
 	printList(pairArray);
 	std::cout << "------------" << std::endl;
+	binaryInsert(pairArray, 23);
 	mergeSort(pairArray, 0, pairArray.size() - 1);
 	printList(pairArray);
 	// if (argc <= 2)
