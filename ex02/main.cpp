@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/15 17:40:26 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/15 23:33:56 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,21 @@ std::vector<int>	readInput(int argc, char **argv)
 	return v;
 }
 
-void	printList(std::vector< std::pair<int, int> >& lst)
+void	printPairedList(std::vector< std::pair<int, int> >& lst)
 {
 	std::vector< std::pair<int, int> >::iterator itr;
 	for (itr = lst.begin(); itr != lst.end(); ++itr)
 		std::cout << "( " << (*itr).first << ", " << (*itr).second << " )" << std::endl;
 }
+
+void	printList(std::vector<int>& lst)
+{
+	std::vector<int>::iterator itr;
+	for (itr = lst.begin(); itr != lst.end(); ++itr)
+		std::cout << *itr << " ";
+	std::cout << std::endl;
+}
+
 
 void	combineSortedArrays(std::vector< std::pair<int, int> >& lst, int l, int m, int r)
 {
@@ -76,7 +85,7 @@ void	mergeSort(std::vector< std::pair<int, int> >& lst, int l, int r)
 	}
 }
 
-void	binaryInsert(std::vector< std::pair<int, int> >& lst, int num)
+void	binaryInsert(std::vector<int>& lst, int num)
 {
 	int	l = 0;
 	int	r = lst.size() - 1;
@@ -84,69 +93,137 @@ void	binaryInsert(std::vector< std::pair<int, int> >& lst, int num)
 	while (l <= r)
 	{
 		int m = l + (r - l) / 2;
-		if (num == lst[m].first) break;
-		if (num > lst[m].first) l = m + 1;
+		if (num == lst[m]) break;
+		if (num > lst[m]) l = m + 1;
 		else r = m - 1;
 	}
-	std::pair<int, int> tmp(num, -1);
-	lst.insert(lst.begin() + l, tmp);
+	lst.insert(lst.begin() + l, num);
 }
 
 std::vector< std::pair<int, int> >	getPairArray(std::vector<int>& array)
 {
 	std::vector< std::pair<int, int> >	res;
 	size_t								len = array.size();
-
+	std::pair<int, int>	tmp;
 	for (size_t i = 0; i < len - 1; i+=2)
 	{
-		std::pair<int, int>	tmp(array[i], array[i+1]);
-		res.push_back(tmp);
-	}
-	if (len % 2 != 0)
-	{
-		std::pair<int, int>	tmp(array[len - 1], -1);
-		res.push_back(tmp);
+		if (array[i] > array[i + 1])
+		{
+			std::pair<int, int>	tmp(array[i], array[i+1]);
+			res.push_back(tmp);
+		}
+		else
+		{
+			std::pair<int, int>	tmp(array[i+1], array[i]);
+			res.push_back(tmp);
+		}
 	}
 	return res;
 }
 
-int	t(int k)
-{
-	return ((pow(2, k + 1) + pow(-1, k)) / 3);
-}
+int	t(int k) { return ((pow(2, k + 1) + pow(-1, k)) / 3) - 1; }
 
-void	insert(std::vector< std::pair<int, int> >& lst)
+std::vector<int>	getListA(std::vector< std::pair<int, int> >& lst)
 {
-	std::vector< std::pair<int, int> >::iterator itr;
+	std::vector< std::pair<int, int> >::iterator	itr;
+	std::vector<int>								res;
+
 	for (itr = lst.begin(); itr != lst.end(); ++itr)
 	{
-		if ((*itr).second >= 0)
-		{
-			binaryInsert(lst, (*itr).second);
-			++itr;
-		}
+		res.push_back((*itr).first);
+	}
+	return	res;
+}
+
+std::vector<int>	getListB(std::vector< std::pair<int, int> >& lst)
+{
+	std::vector< std::pair<int, int> >::iterator	itr;
+	std::vector<int>								res;
+
+	for (itr = lst.begin(); itr != lst.end(); ++itr)
+	{
+		res.push_back((*itr).second);
+	}
+	return	res;
+}
+
+void	insertBatch(std::vector<int>& lstA, std::vector<int>& lstB, size_t tk, size_t lastBIndex)
+{
+	size_t	len = lstB.size();
+	size_t	i = (tk >= len) ? lastBIndex : tk;
+	(void)lstA;
+	// std::cout << "tk: " << tk << "\t";
+	// std::cout << "start point: " << i << std::endl;
+	for (; i >= lastBIndex; i--)
+	{
+		binaryInsert(lstA, lstB[i]);
+		std::cout << "insert -> " << lstB[i] << std::endl;
 	}
 	
+}
+
+void	insert(std::vector<int>& lstA, std::vector<int>& lstB)
+{
+	std::vector<int>::iterator itr;
+
+	lstA.insert(lstA.begin(), lstB[0]);
+
+	size_t	lstBLen = lstB.size();
+	size_t	lastBIndex = 0;
+	size_t	k = 2;
+	size_t	tOut;
+
+	// std::cout << "lstB len: " << lstBLen << std::endl;
+	do
+	{
+		tOut = t(k);
+		// std::cout << "t(lBI): " << tOut << std::endl;
+		// std::cout << "lastIndexB: " << lastBIndex << std::endl;
+		insertBatch(lstA, lstB, tOut, lastBIndex + 1);
+		lastBIndex = tOut;
+		k++;
+	} while (lastBIndex < lstBLen && tOut <= lstBLen);
+	// std::cout << "-------" << std::endl;
+}
+
+void	insertLastOdd(std::vector<int>& initLst, std::vector<int>& lstB)
+{
+	size_t	len = initLst.size();
+
+	if (len % 2 != 0) lstB.push_back(initLst[len - 1]);
 }
 
 int	main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
-	int	tmp[] = {9,44,8,1,7,0,3,2,5,6,25};
+	int	tmp[] = {9,44,8,1,7,0,3,2,5,6,25,7,4,21,13,32};
 	std::vector<int>	array;
-	int length = 11;
+	int length = sizeof(tmp) / sizeof(int);
 	for (int i = 0; i < length; i++) array.push_back(tmp[i]);
 	
 	std::vector< std::pair<int, int> > pairArray;
 	pairArray = getPairArray(array);
-	printList(pairArray);
+	printPairedList(pairArray);
 	std::cout << "------------" << std::endl;
-	binaryInsert(pairArray, 23);
 	mergeSort(pairArray, 0, pairArray.size() - 1);
-	insert(pairArray);
-	printList(pairArray);
-	std::cout << t(4) << std::endl;
+	// printPairedList(pairArray);
+	std::vector<int>	listA = getListA(pairArray);
+	std::vector<int>	listB = getListB(pairArray);
+	std::cout << "LIST: " << std::endl;
+	printList(array);
+	std::cout << "LIST A" << std::endl;
+	printList(listA);
+	std::cout << "----------" << std::endl;
+	/* check if odd and insert the last odd element to the end of b */
+	insertLastOdd(array, listB);
+	std::cout << "LIST B" << std::endl;
+	printList(listB);
+	insert(listA, listB);
+	std::cout << "----------" << std::endl;
+	std::cout << "LIST A" << std::endl;
+	printList(listA);
+	
 	// if (argc <= 2)
 	// {
 	// 	std::cerr << "[ERROR]: There's nothing to sort :(" << std::endl;
