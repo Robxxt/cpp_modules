@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 01:31:34 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 01:42:25 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,52 +83,7 @@ void	binaryInsert(std::vector<int>& lst, int num)
 	lst.insert(lst.begin() + l, num);
 }
 
-std::vector< std::pair<int, int> >	getPairArray(std::vector<int>& array)
-{
-	std::vector< std::pair<int, int> >	res;
-	size_t								len = array.size();
-	std::pair<int, int>	tmp;
-	for (size_t i = 0; i < len - 1; i+=2)
-	{
-		if (array[i] > array[i + 1])
-		{
-			std::pair<int, int>	tmp(array[i], array[i+1]);
-			res.push_back(tmp);
-		}
-		else
-		{
-			std::pair<int, int>	tmp(array[i+1], array[i]);
-			res.push_back(tmp);
-		}
-	}
-	return res;
-}
-
 int	t(int k) { return ((pow(2, k + 1) + pow(-1, k)) / 3) - 1; }
-
-std::vector<int>	getListA(std::vector< std::pair<int, int> >& lst)
-{
-	std::vector< std::pair<int, int> >::iterator	itr;
-	std::vector<int>								res;
-
-	for (itr = lst.begin(); itr != lst.end(); ++itr)
-	{
-		res.push_back((*itr).first);
-	}
-	return	res;
-}
-
-std::vector<int>	getListB(std::vector< std::pair<int, int> >& lst)
-{
-	std::vector< std::pair<int, int> >::iterator	itr;
-	std::vector<int>								res;
-
-	for (itr = lst.begin(); itr != lst.end(); ++itr)
-	{
-		res.push_back((*itr).second);
-	}
-	return	res;
-}
 
 void	insertBatch(std::vector<int>& lstA, std::vector<int>& lstB, size_t tk, size_t lastBIndex)
 {

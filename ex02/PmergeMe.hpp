@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:41:39 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 01:35:05 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 01:42:31 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,11 @@ public:
 	~PmergeMe();
 	void	printList();
 	void	getPairArray();
+	void	getTwoArrays();
 };
 
 void	combineSortedArrays(std::vector< std::pair<int, int> >& lst, int l, int m, int r);
 void	mergeSort(std::vector< std::pair<int, int> >& lst, int l, int r);
-std::vector<int>	getListA(std::vector< std::pair<int, int> >& lst);
-std::vector<int>	getListB(std::vector< std::pair<int, int> >& lst);
 void	insertLastOdd(std::vector<int>& initLst, std::vector<int>& lstB);
 void	insert(std::vector<int>& lstA, std::vector<int>& lstB);
 
