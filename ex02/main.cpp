@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 02:24:02 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 02:27:07 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,26 +32,6 @@ std::vector<int>	readInput(int argc, char **argv)
 		v.push_back(atoi(argv[i]));
 	}
 	return v;
-}
-
-void	combineSortedArrays(std::vector< std::pair<int, int> >& lst, int l, int m, int r)
-{
-	int	leftLen = m - l + 1;
-	int	rightLen = r - m;
-	std::vector< std::pair<int, int> > leftCopy(leftLen);
-	std::vector< std::pair<int, int> > rightCopy(rightLen);
-	int	i, j, k;
-
-	for (int i = 0; i < leftLen; i++) leftCopy[i] = lst[l + i];
-	for (int i = 0; i < rightLen; i++) rightCopy[i] = lst[i + m + 1];
-	for (i = 0, j = 0, k = l; i < leftLen && j < rightLen; k++)
-	{
-		if (leftCopy[i].first <= rightCopy[j].first) lst[k] = leftCopy[i++];
-		else lst[k] = rightCopy[j++];
-	}
-	/* If there are any items from leftCopy or rightCopy insert them in the lst */
-	while (i < leftLen) lst[k++] = leftCopy[i++];
-	while (j < rightLen) lst[k++] = rightCopy[j++];
 }
 
 int	t(int k) { return ((pow(2, k + 1) + pow(-1, k)) / 3) - 1; }

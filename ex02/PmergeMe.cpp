@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:44:48 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 02:23:27 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 02:26:33 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	PmergeMe::mergeSort(int l, int r)
 		int	m = l + (r - l) / 2;
 		mergeSort(l, m);
 		mergeSort(m + 1, r);
-		combineSortedArrays(_pairArray, l, m, r);
+		combineSortedArrays(l, m, r);
 	}
 }
 
@@ -113,4 +113,24 @@ void	PmergeMe::binaryInsertionSort(int num)
 		else r = m - 1;
 	}
 	_arrayA.insert(_arrayA.begin() + l, num);
+}
+
+void	PmergeMe::combineSortedArrays(int l, int m, int r)
+{
+	int	leftLen = m - l + 1;
+	int	rightLen = r - m;
+	std::vector< std::pair<int, int> > leftCopy(leftLen);
+	std::vector< std::pair<int, int> > rightCopy(rightLen);
+	int	i, j, k;
+
+	for (int i = 0; i < leftLen; i++) leftCopy[i] = _pairArray[l + i];
+	for (int i = 0; i < rightLen; i++) rightCopy[i] = _pairArray[i + m + 1];
+	for (i = 0, j = 0, k = l; i < leftLen && j < rightLen; k++)
+	{
+		if (leftCopy[i].first <= rightCopy[j].first) _pairArray[k] = leftCopy[i++];
+		else _pairArray[k] = rightCopy[j++];
+	}
+	/* If there are any items from leftCopy or rightCopy insert them in the _pairArray */
+	while (i < leftLen) _pairArray[k++] = leftCopy[i++];
+	while (j < rightLen) _pairArray[k++] = rightCopy[j++];
 }
