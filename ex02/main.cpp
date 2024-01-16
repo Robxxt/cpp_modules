@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 00:35:00 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 01:04:52 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ void	binaryInsert(std::vector<int>& lst, int num)
 	while (l <= r)
 	{
 		int m = l + (r - l) / 2;
-		if (num == lst[m]) break;
 		if (num > lst[m]) l = m + 1;
 		else r = m - 1;
 	}
@@ -166,17 +165,13 @@ void	insert(std::vector<int>& lstA, std::vector<int>& lstB)
 	size_t	k = 2;
 	size_t	tOut;
 
-	// std::cout << "lstB len: " << lstBLen << std::endl;
 	do
 	{
 		tOut = t(k);
-		// std::cout << "t(lBI): " << tOut << std::endl;
-		// std::cout << "lastIndexB: " << lastBIndex << std::endl;
 		insertBatch(lstA, lstB, tOut, lastBIndex + 1);
 		lastBIndex = tOut;
 		k++;
 	} while (lastBIndex < lstBLen && tOut <= lstBLen);
-	// std::cout << "-------" << std::endl;
 }
 
 void	insertLastOdd(std::vector<int>& initLst, std::vector<int>& lstB)
@@ -186,52 +181,9 @@ void	insertLastOdd(std::vector<int>& initLst, std::vector<int>& lstB)
 	if (len % 2 != 0) lstB.push_back(initLst[len - 1]);
 }
 
-bool	hasDuplicates(const std::vector<int>& myList) {
-    std::vector<int>::const_iterator it1, it2;
-
-    for (it1 = myList.begin(); it1 != myList.end(); ++it1) {
-        for (it2 = myList.begin(); it2 != myList.end(); ++it2) {
-            if (it1 != it2 && *it1 == *it2) {
-                return true;
-            }
-        }
-    }
-
-    return false;  // No duplicates found
-}
-
 
 int	main(int argc, char **argv)
-{
-	// (void)argc;
-	// (void)argv;
-	// int	tmp[] = {9,44,8,1,7,0,3,2,5,6,25,71,4,21,23,13,32,51};
-	// std::vector<int>	array;
-	// int length = sizeof(tmp) / sizeof(int);
-	// for (int i = 0; i < length; i++) array.push_back(tmp[i]);
-	
-	// std::vector< std::pair<int, int> > pairArray;
-	// pairArray = getPairArray(array);
-	// printPairedList(pairArray);
-	// std::cout << "------------" << std::endl;
-	// mergeSort(pairArray, 0, pairArray.size() - 1);
-	// // printPairedList(pairArray);
-	// std::vector<int>	listA = getListA(pairArray);
-	// std::vector<int>	listB = getListB(pairArray);
-	// std::cout << "LIST: " << std::endl;
-	// printList(array);
-	// std::cout << "LIST A" << std::endl;
-	// printList(listA);
-	// std::cout << "----------" << std::endl;
-	// /* check if odd and insert the last odd element to the end of b */
-	// insertLastOdd(array, listB);
-	// std::cout << "LIST B" << std::endl;
-	// printList(listB);
-	// insert(listA, listB);
-	// std::cout << "----------" << std::endl;
-	// std::cout << "LIST A" << std::endl;
-	// printList(listA);
-	
+{	
 	if (argc <= 2)
 	{
 		std::cerr << "[ERROR]: There's nothing to sort :(" << std::endl;
