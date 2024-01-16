@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:44:48 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 04:23:08 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 19:13:19 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	PmergeMe::sortWithDeque()
 	std::cout << "Before: ";
 	printDeque(_deque);
 	getPairDeque();
-	mergeSort(0, _pairDeque.size() - 1);
+	mergeSortDeque(0, _pairDeque.size() - 1);
 	getTwoDeques();
 	insertDeque();
 	std::cout << "After: ";
