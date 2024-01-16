@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:41:39 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 03:11:51 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 03:50:05 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <iostream>
 # include <vector>
-# include <list>
+# include <deque>
 # include <stdexcept>
 # include <cmath>
 # include <ctime>
@@ -31,12 +31,17 @@ private:
 	std::vector<int>	_arrayA;
 	std::vector<int>	_arrayB;
 	std::vector< std::pair<int, int> > _pairArray;
+	std::deque<int>						_deque;
+	std::deque<int>						_dequeA;
+	std::deque<int>						_dequeB;
+	std::deque< std::pair<int, int> > _pairDeque;
 	PmergeMe();
 	PmergeMe(const PmergeMe& p);
 	PmergeMe& operator=(const PmergeMe& p);
 public:
 	PmergeMe(const std::vector<int>& lst);
 	~PmergeMe();
+	/* Functions for vectors */
 	void	printArray(const std::vector<int>& arr);
 	void	getPairArray();
 	void	getTwoArrays();
@@ -45,6 +50,17 @@ public:
 	void	combineSortedArrays(int l, int m, int r);
 	void	insertBatch(size_t tk, size_t lastBIndex);
 	void	insert();
+	void	sortWithVector();
+	/* Functions for deques */
+	void	printDeque(const std::deque<int>& arr);
+	void	getPairDeque();
+	void	getTwoDeques();
+	void	binaryInsertionSortDeque(int num);
+	void	mergeSortDeque(int l, int r);
+	void	insertDeque();
+	void	sortWithDeque();
+	void	insertBatchDeque(size_t tk, size_t lastBIndex);
+	void	combineSortedDeques(int l, int m, int r);
 };
 
 int		t(int k);
