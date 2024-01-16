@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:44:48 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 02:19:43 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 02:23:27 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	PmergeMe::insertBatch(size_t tk, size_t lastBIndex)
 {
 	size_t	len = _arrayB.size();
 	size_t	i = (tk >= len) ? len - 1 : tk;
-	for (; i >= lastBIndex; i--) binaryInsert(_arrayA, _arrayB[i]);
+	for (; i >= lastBIndex; i--) binaryInsertionSort(_arrayB[i]);
 }
 
 void	PmergeMe::mergeSort(int l, int r)
@@ -99,4 +99,18 @@ void	PmergeMe::mergeSort(int l, int r)
 		mergeSort(m + 1, r);
 		combineSortedArrays(_pairArray, l, m, r);
 	}
+}
+
+void	PmergeMe::binaryInsertionSort(int num)
+{
+	int	l = 0;
+	int	r = _arrayA.size() - 1;
+
+	while (l <= r)
+	{
+		int m = l + (r - l) / 2;
+		if (num > _arrayA[m]) l = m + 1;
+		else r = m - 1;
+	}
+	_arrayA.insert(_arrayA.begin() + l, num);
 }
