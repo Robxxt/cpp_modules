@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:44:48 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 01:41:42 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 01:49:03 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@ PmergeMe::PmergeMe(const std::vector<int>& lst)
 	getPairArray();
 	mergeSort(_pairArray, 0, _pairArray.size() - 1);
 	getTwoArrays();
-	// _arrayA = getListA(_pairArray);
-	// _arrayB = getListB(_pairArray);
-	insertLastOdd(_array, _arrayB);
-	insert(_arrayA, _arrayB);
+	insert();
 	printList();
 }
 
@@ -63,4 +60,25 @@ void	PmergeMe::getTwoArrays()
 		_arrayA.push_back((*itr).first);
 		_arrayB.push_back((*itr).second);
 	}
+}
+
+void	PmergeMe::insert()
+{
+	_arrayA.insert(_arrayA.begin(), _arrayB[0]);
+
+	size_t	lstBLen = _arrayB.size();
+	size_t	lastBIndex = 0;
+	size_t	k = 2;
+	size_t	tOut;
+
+	size_t	len = _array.size();
+
+	if (len % 2 != 0) _arrayB.push_back(_array[len - 1]);
+	do
+	{
+		tOut = t(k);
+		insertBatch(_arrayA, _arrayB, tOut, lastBIndex + 1);
+		lastBIndex = tOut;
+		k++;
+	} while (lastBIndex < lstBLen && tOut <= lstBLen);
 }

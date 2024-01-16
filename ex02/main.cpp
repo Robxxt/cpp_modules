@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 01:42:25 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 01:49:10 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,14 +112,6 @@ void	insert(std::vector<int>& lstA, std::vector<int>& lstB)
 		k++;
 	} while (lastBIndex < lstBLen && tOut <= lstBLen);
 }
-
-void	insertLastOdd(std::vector<int>& initLst, std::vector<int>& lstB)
-{
-	size_t	len = initLst.size();
-
-	if (len % 2 != 0) lstB.push_back(initLst[len - 1]);
-}
-
 
 int	main(int argc, char **argv)
 {	
