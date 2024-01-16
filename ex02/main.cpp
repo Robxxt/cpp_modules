@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 02:15:41 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 02:20:02 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,6 @@ void	combineSortedArrays(std::vector< std::pair<int, int> >& lst, int l, int m, 
 	/* If there are any items from leftCopy or rightCopy insert them in the lst */
 	while (i < leftLen) lst[k++] = leftCopy[i++];
 	while (j < rightLen) lst[k++] = rightCopy[j++];
-}
-
-void	mergeSort(std::vector< std::pair<int, int> >& lst, int l, int r)
-{
-	if (l < r)
-	{
-		int	m = l + (r - l) / 2;
-		mergeSort(lst, l, m);
-		mergeSort(lst, m + 1, r);
-		combineSortedArrays(lst, l, m, r);
-	}
 }
 
 void	binaryInsert(std::vector<int>& lst, int num)

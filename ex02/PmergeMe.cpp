@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:44:48 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 01:55:37 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 02:19:43 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ PmergeMe::PmergeMe(const std::vector<int>& lst)
 {
 	_array = lst;
 	getPairArray();
-	mergeSort(_pairArray, 0, _pairArray.size() - 1);
+	mergeSort(0, _pairArray.size() - 1);
 	getTwoArrays();
 	insert();
 	printList();
@@ -88,4 +88,15 @@ void	PmergeMe::insertBatch(size_t tk, size_t lastBIndex)
 	size_t	len = _arrayB.size();
 	size_t	i = (tk >= len) ? len - 1 : tk;
 	for (; i >= lastBIndex; i--) binaryInsert(_arrayA, _arrayB[i]);
+}
+
+void	PmergeMe::mergeSort(int l, int r)
+{
+	if (l < r)
+	{
+		int	m = l + (r - l) / 2;
+		mergeSort(l, m);
+		mergeSort(m + 1, r);
+		combineSortedArrays(_pairArray, l, m, r);
+	}
 }
