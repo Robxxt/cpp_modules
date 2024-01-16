@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/03 02:25:13 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 19:42:35 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 20:08:45 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ bool	Date::isValid() const
 	Convert to t_time with mktime and verify if that
 	day of that month of that year does actually exists.
 	*/
-	return (!(_year <= 0 || (_month > 12 || _month == 0) || (_day > 31 || _day == 0)) && mktime(&date) != -1)? true : false;
+	return (!(_year <= 0 || (_month > 12 || _month == 0) || (_day > 31 || _day == 0)) && std::mktime(&date) != -1)? true : false;
 }
 
 Date::~Date() {}
