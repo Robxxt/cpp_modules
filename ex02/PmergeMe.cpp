@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:44:48 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 02:26:33 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 02:54:19 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,22 @@
 PmergeMe::PmergeMe(const std::vector<int>& lst)
 {
 	_array = lst;
+	std::cout << "Before: ";
+	printArray(_array);
 	getPairArray();
 	mergeSort(0, _pairArray.size() - 1);
 	getTwoArrays();
 	insert();
-	printList();
+	std::cout << "After: ";
+	printArray(_arrayA);
 }
 
 PmergeMe::~PmergeMe() {}
 
-void	PmergeMe::printList()
+void	PmergeMe::printArray(const std::vector<int>& arr)
 {
-	std::vector<int>::iterator itr;
-	for (itr = _arrayA.begin(); itr != _arrayA.end(); ++itr)
+	std::vector<int>::const_iterator itr;
+	for (itr = arr.begin(); itr != arr.end(); ++itr)
 		std::cout << *itr << " ";
 	std::cout << std::endl;
 }

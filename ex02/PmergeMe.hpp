@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:41:39 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 02:27:04 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 02:52:13 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ private:
 public:
 	PmergeMe(const std::vector<int>& lst);
 	~PmergeMe();
-	void	printList();
+	void	printArray(const std::vector<int>& arr);
 	void	getPairArray();
 	void	getTwoArrays();
 	void	binaryInsertionSort(int num);
