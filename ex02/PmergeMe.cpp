@@ -6,16 +6,17 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:44:48 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 03:50:59 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 04:23:08 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe(const std::vector<int>& lst)
+PmergeMe::PmergeMe(const std::vector<int>& vect, const std::deque<int>& deq)
 {
-	_array = lst;
+	_array = vect;
 	sortWithVector();
+	_deque = deq;
 	sortWithDeque();
 }
 
@@ -28,7 +29,7 @@ void	PmergeMe::sortWithVector()
 	getPairArray();
 	mergeSort(0, _pairArray.size() - 1);
 	getTwoArrays();
-	insert();
+	insertVector();
 	std::cout << "After: ";
 	printArray(_arrayA);
 	_totalTime = static_cast<double>((_finalTime - _startTime)) / CLOCKS_PER_SEC;
@@ -39,15 +40,15 @@ void	PmergeMe::sortWithVector()
 void	PmergeMe::sortWithDeque()
 {
 	std::cout << "Before: ";
-	printArray(_array);
-	getPairArray();
-	mergeSort(0, _pairArray.size() - 1);
-	getTwoArrays();
-	insert();
+	printDeque(_deque);
+	getPairDeque();
+	mergeSort(0, _pairDeque.size() - 1);
+	getTwoDeques();
+	insertDeque();
 	std::cout << "After: ";
-	printArray(_arrayA);
+	printDeque(_dequeA);
 	_totalTime = static_cast<double>((_finalTime - _startTime)) / CLOCKS_PER_SEC;
-	std::cout <<  "Time to process a range of " << _array.size() << " elements with std::vector<int> : ";
+	std::cout <<  "Time to process a range of " << _deque.size() << " elements with std::deque<int> : ";
 	std::cout << std::fixed << std::setprecision(6) << _totalTime << "s" << std::endl;
 }
 
@@ -131,7 +132,7 @@ void	PmergeMe::getTwoDeques()
 	}
 }
 
-void	PmergeMe::insert()
+void	PmergeMe::insertVector()
 {
 	_arrayA.insert(_arrayA.begin(), _arrayB[0]);
 
@@ -168,7 +169,7 @@ void	PmergeMe::insertDeque()
 	do
 	{
 		tOut = t(k);
-		insertBatch(tOut, lastBIndex + 1);
+		insertBatchDeque(tOut, lastBIndex + 1);
 		lastBIndex = tOut;
 		k++;
 	} while (lastBIndex < lstBLen && tOut <= lstBLen);

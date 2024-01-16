@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 02:27:07 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 03:58:24 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,20 @@ bool	isValidNumber(const std::string& in)
 	return true;
 }
 
-std::vector<int>	readInput(int argc, char **argv)
+std::vector<int>	readInputVector(int argc, char **argv)
 {
 	std::vector<int>	v;
+	for (int i = 1; i < argc; i++)
+	{
+		if (!isValidNumber(argv[i])) throw std::invalid_argument("The list has an invalid item.");
+		v.push_back(atoi(argv[i]));
+	}
+	return v;
+}
+
+std::deque<int>	readInputDeque(int argc, char **argv)
+{
+	std::deque<int>	v;
 	for (int i = 1; i < argc; i++)
 	{
 		if (!isValidNumber(argv[i])) throw std::invalid_argument("The list has an invalid item.");
@@ -45,8 +56,9 @@ int	main(int argc, char **argv)
 	}
 	try
 	{
-		std::vector<int> lst = readInput(argc, argv);
-		PmergeMe program(lst);
+		std::vector<int> ve = readInputVector(argc, argv);
+		std::deque<int> de = readInputDeque(argc, argv);
+		PmergeMe program(ve, de);
 	}
 	catch(const std::exception& e)
 	{

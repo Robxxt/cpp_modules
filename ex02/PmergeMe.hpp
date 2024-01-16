@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:41:39 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 03:50:05 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 04:21:19 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ private:
 	PmergeMe(const PmergeMe& p);
 	PmergeMe& operator=(const PmergeMe& p);
 public:
-	PmergeMe(const std::vector<int>& lst);
+	PmergeMe(const std::vector<int>& vect, const std::deque<int>& deq);
 	~PmergeMe();
 	/* Functions for vectors */
 	void	printArray(const std::vector<int>& arr);
@@ -49,7 +49,7 @@ public:
 	void	mergeSort(int l, int r);
 	void	combineSortedArrays(int l, int m, int r);
 	void	insertBatch(size_t tk, size_t lastBIndex);
-	void	insert();
+	void	insertVector();
 	void	sortWithVector();
 	/* Functions for deques */
 	void	printDeque(const std::deque<int>& arr);
