@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:41:39 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 01:49:14 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 01:50:09 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ public:
 
 void	combineSortedArrays(std::vector< std::pair<int, int> >& lst, int l, int m, int r);
 void	mergeSort(std::vector< std::pair<int, int> >& lst, int l, int r);
-// void	insert(std::vector<int>& lstA, std::vector<int>& lstB);
 void	insertBatch(std::vector<int>& lstA, std::vector<int>& lstB, size_t tk, size_t lastBIndex);
 int		t(int k);
 #endif

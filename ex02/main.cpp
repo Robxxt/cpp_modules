@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 01:49:10 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 01:50:43 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,26 +91,6 @@ void	insertBatch(std::vector<int>& lstA, std::vector<int>& lstB, size_t tk, size
 	size_t	i = (tk >= len) ? len - 1 : tk;
 	(void)lstA;
 	for (; i >= lastBIndex; i--) binaryInsert(lstA, lstB[i]);
-}
-
-void	insert(std::vector<int>& lstA, std::vector<int>& lstB)
-{
-	std::vector<int>::iterator itr;
-
-	lstA.insert(lstA.begin(), lstB[0]);
-
-	size_t	lstBLen = lstB.size();
-	size_t	lastBIndex = 0;
-	size_t	k = 2;
-	size_t	tOut;
-
-	do
-	{
-		tOut = t(k);
-		insertBatch(lstA, lstB, tOut, lastBIndex + 1);
-		lastBIndex = tOut;
-		k++;
-	} while (lastBIndex < lstBLen && tOut <= lstBLen);
 }
 
 int	main(int argc, char **argv)
