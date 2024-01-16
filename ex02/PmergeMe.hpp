@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:41:39 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 02:52:13 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 03:11:51 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,18 @@
 # include <list>
 # include <stdexcept>
 # include <cmath>
+# include <ctime>
+# include <iomanip>
 
 class PmergeMe
 {
 private:
-	std::vector<int> _array;
-	std::vector<int> _arrayA;
-	std::vector<int> _arrayB;
+	clock_t				_startTime;
+	clock_t				_finalTime;
+	double				_totalTime;
+	std::vector<int>	_array;
+	std::vector<int>	_arrayA;
+	std::vector<int>	_arrayB;
 	std::vector< std::pair<int, int> > _pairArray;
 	PmergeMe();
 	PmergeMe(const PmergeMe& p);

@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:44:48 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 02:54:19 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 03:17:23 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ PmergeMe::PmergeMe(const std::vector<int>& lst)
 	insert();
 	std::cout << "After: ";
 	printArray(_arrayA);
+	_totalTime = static_cast<double>((_finalTime - _startTime)) / CLOCKS_PER_SEC;
+	std::cout <<  "Time to process a range of " << _array.size() << " elements with std::vector<int> : ";
+	std::cout << std::fixed << std::setprecision(5) << _totalTime << "s" << std::endl;
 }
 
 PmergeMe::~PmergeMe() {}
@@ -39,6 +42,8 @@ void	PmergeMe::getPairArray()
 {
 	size_t								len = _array.size();
 	std::pair<int, int>					tmp;
+
+	_startTime = clock();
 	for (size_t i = 0; i < len - 1; i+=2)
 	{
 		if (_array[i] > _array[i + 1])
@@ -84,6 +89,7 @@ void	PmergeMe::insert()
 		lastBIndex = tOut;
 		k++;
 	} while (lastBIndex < lstBLen && tOut <= lstBLen);
+	_finalTime = clock();
 }
 
 void	PmergeMe::insertBatch(size_t tk, size_t lastBIndex)
