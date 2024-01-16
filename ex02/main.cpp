@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 01:04:52 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 01:30:40 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,6 @@ void	printPairedList(std::vector< std::pair<int, int> >& lst)
 	for (itr = lst.begin(); itr != lst.end(); ++itr)
 		std::cout << "( " << (*itr).first << ", " << (*itr).second << " )" << std::endl;
 }
-
-void	printList(std::vector<int>& lst)
-{
-	std::vector<int>::iterator itr;
-	for (itr = lst.begin(); itr != lst.end(); ++itr)
-		std::cout << *itr << " ";
-	std::cout << std::endl;
-}
-
 
 void	combineSortedArrays(std::vector< std::pair<int, int> >& lst, int l, int m, int r)
 {
