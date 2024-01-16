@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 01:55:31 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 01:56:30 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,6 @@ void	binaryInsert(std::vector<int>& lst, int num)
 }
 
 int	t(int k) { return ((pow(2, k + 1) + pow(-1, k)) / 3) - 1; }
-
-// void	insertBatch(std::vector<int>& lstA, std::vector<int>& lstB, size_t tk, size_t lastBIndex)
-// {
-// 	size_t	len = lstB.size();
-// 	size_t	i = (tk >= len) ? len - 1 : tk;
-// 	(void)lstA;
-// 	for (; i >= lastBIndex; i--) binaryInsert(lstA, lstB[i]);
-// }
 
 int	main(int argc, char **argv)
 {	
