@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:44:48 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 19:13:19 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 20:13:45 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ void	PmergeMe::sortWithVector()
 
 void	PmergeMe::sortWithDeque()
 {
-	std::cout << "Before: ";
-	printDeque(_deque);
+	// std::cout << "Before: ";
+	// printDeque(_deque);
 	getPairDeque();
 	mergeSortDeque(0, _pairDeque.size() - 1);
 	getTwoDeques();
 	insertDeque();
-	std::cout << "After: ";
-	printDeque(_dequeA);
+	// std::cout << "After: ";
+	// printDeque(_dequeA);
 	_totalTime = static_cast<double>((_finalTime - _startTime)) / CLOCKS_PER_SEC;
 	std::cout <<  "Time to process a range of " << _deque.size() << " elements with std::deque<int> : ";
 	std::cout << std::fixed << std::setprecision(6) << _totalTime << "s" << std::endl;
