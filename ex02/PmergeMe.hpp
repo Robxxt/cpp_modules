@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:41:39 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 01:32:57 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 01:35:05 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ public:
 	void	getPairArray();
 };
 
-std::vector< std::pair<int, int> >	getPairArray(std::vector<int>& array);
 void	combineSortedArrays(std::vector< std::pair<int, int> >& lst, int l, int m, int r);
 void	mergeSort(std::vector< std::pair<int, int> >& lst, int l, int r);
 std::vector<int>	getListA(std::vector< std::pair<int, int> >& lst);
