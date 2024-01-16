@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:44:48 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 01:30:22 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 01:34:26 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 PmergeMe::PmergeMe(const std::vector<int>& lst)
 {
 	_array = lst;
-	_pairArray = getPairArray(_array);
+	getPairArray();
 	mergeSort(_pairArray, 0, _pairArray.size() - 1);
 	_arrayA = getListA(_pairArray);
 	_arrayB = getListB(_pairArray);
@@ -34,4 +34,23 @@ void	PmergeMe::printList()
 	for (itr = _arrayA.begin(); itr != _arrayA.end(); ++itr)
 		std::cout << *itr << " ";
 	std::cout << std::endl;
+}
+
+void	PmergeMe::getPairArray()
+{
+	size_t								len = _array.size();
+	std::pair<int, int>					tmp;
+	for (size_t i = 0; i < len - 1; i+=2)
+	{
+		if (_array[i] > _array[i + 1])
+		{
+			std::pair<int, int>	tmp(_array[i], _array[i+1]);
+			_pairArray.push_back(tmp);
+		}
+		else
+		{
+			std::pair<int, int>	tmp(_array[i+1], _array[i]);
+			_pairArray.push_back(tmp);
+		}
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 01:30:40 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 01:31:34 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,6 @@ std::vector<int>	readInput(int argc, char **argv)
 		v.push_back(atoi(argv[i]));
 	}
 	return v;
-}
-
-void	printPairedList(std::vector< std::pair<int, int> >& lst)
-{
-	std::vector< std::pair<int, int> >::iterator itr;
-	for (itr = lst.begin(); itr != lst.end(); ++itr)
-		std::cout << "( " << (*itr).first << ", " << (*itr).second << " )" << std::endl;
 }
 
 void	combineSortedArrays(std::vector< std::pair<int, int> >& lst, int l, int m, int r)
