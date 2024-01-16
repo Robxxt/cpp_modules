@@ -6,7 +6,7 @@
 /*   By: rdragan <rdragan@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 17:38:57 by rdragan           #+#    #+#             */
-/*   Updated: 2024/01/16 01:56:30 by rdragan          ###   ########.fr       */
+/*   Updated: 2024/01/16 02:15:41 by rdragan          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,7 @@
 
 bool	isValidNumber(const std::string& in)
 {
-
-	for (size_t i = 0; i < in.length(); i++)
-	{
-		if (!std::isdigit(in[i])) return false;
-	}
+	for (size_t i = 0; i < in.length(); i++) if (!std::isdigit(in[i])) return false;
 	return true;
 }
 
